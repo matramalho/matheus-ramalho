@@ -114,6 +114,21 @@ export const iconLibrary = {
       <line x1="16" y1="12" x2="22" y2="12"/>
     </svg>
   `
+  ,
+  'image': `
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="3" y="3" width="18" height="18" rx="2"/>
+      <circle cx="8.5" cy="8.5" r="1.5"/>
+      <path d="m21 15-5-5L5 21"/>
+    </svg>
+  `,
+  'database': `
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="12" cy="5" rx="8" ry="3"/>
+      <path d="M4 5v7c0 1.7 3.6 3 8 3s8-1.3 8-3V5"/>
+      <path d="M4 12v7c0 1.7 3.6 3 8 3s8-1.3 8-3v-7"/>
+    </svg>
+  `
 };
 
 export function renderIcons() {
