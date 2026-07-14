@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Case: Desenvolvimento Assistido por Agentes — Matheus Ramalho</title>
+  <meta name="description" content="Estudo de caso sobre desenvolvimento assistido por agentes de IA com Antigravity, orquestração técnica, automação de comandos e supervisão humana ativa.">
+  
+  <!-- Estilos Gerais e Específicos de Cases -->
+  <link rel="stylesheet" href="../../src/styles/main.css">
+  <link rel="stylesheet" href="../../src/styles/components.css">
+  <link rel="stylesheet" href="../../src/styles/cases.css">
+</head>
+<body>
+
+  <!-- Header / Navigation -->
+  <header class="navbar">
+    <div class="container">
+      <a href="/" class="nav-logo">
+        <span data-icon="n8n" style="color: var(--accent-blue)"></span>
+        Matheus Ramalho
+      </a>
+      <nav class="nav-links">
+        <a href="/#cases" class="nav-link">Projetos</a>
+        <a href="/#capacidades" class="nav-link">Capacidades</a>
+        <a href="/#como-uso-ia" class="nav-link">Uso de IA</a>
+        <a href="/#processo" class="nav-link">Processo</a>
+        <a href="/#seguranca" class="nav-link">Segurança & LGPD</a>
+        <a href="/#sobre" class="nav-link">Sobre</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Case Header -->
+    <header class="case-page-header">
+      <div class="container">
+        <a href="/" class="case-back-link">
+          <span data-icon="arrow-right" style="transform: rotate(180deg);"></span>
+          Voltar para a Home
+        </a>
+        <div class="case-header-content">
+          <div style="display: flex; gap: 8px;">
+            <span class="badge badge-blue">Antigravity</span>
+            <span class="badge badge-purple">IA Operacional</span>
+            <span class="badge badge-green">Governança & QA</span>
+          </div>
+          <h1 class="case-title">Desenvolvimento Assistido por Agentes com Antigravity</h1>
+          <p class="case-subtitle">
+            Metodologia prática e segura de engenharia operacional utilizando agentes de IA para estruturação de projetos, geração de documentação, automação de testes locais e controle de arquivos, sempre sob supervisão humana ativa.
+          </p>
+        </div>
+      </div>
+    </header>
+
+    <!-- Case Body -->
+    <section class="container">
+      <div class="case-content-layout">
+        <!-- Coluna Principal (Narrativa) -->
+        <article class="case-main-content">
+          
+          <!-- Problema -->
+          <div class="case-section">
+            <h2 class="case-section-title">O Problema Operacional</h2>
+            <p>
+              O ciclo tradicional de desenvolvimento web e de automações exige esforço manual repetitivo na configuração de ambientes, organização de estruturas de diretórios, escrita de documentações de suporte e validações de build. Esse modelo apresenta desafios operacionais comuns:
+            </p>
+            <div class="case-list">
+              <div class="case-list-item">
+                <span data-icon="alert-triangle" class="case-list-item-icon"></span>
+                <p><strong>Sobrecarga em Tarefas de Setup:</strong> O tempo gasto estruturando diretórios e criando arquivos boilerplates desvia o foco das regras de negócio do cliente.</p>
+              </div>
+              <div class="case-list-item">
+                <span data-icon="alert-triangle" class="case-list-item-icon"></span>
+                <p><strong>Documentação Desatualizada:</strong> Escrever e manter manuais operacionais e diagramas técnicos atualizados de forma manual é propenso a falhas de consistência.</p>
+              </div>
+              <div class="case-list-item">
+                <span data-icon="alert-triangle" class="case-list-item-icon"></span>
+                <p><strong>Falta de Rastreabilidade em Testes:</strong> Executar scripts e testar builds sem processos padronizados ou checklists de validação visual dificulta o controle de erros antes da publicação.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Solução -->
+          <div class="case-section">
+            <h2 class="case-section-title">A Solução Desenvolvida</h2>
+            <p>
+              Foi adotada uma esteira de trabalho baseada em <strong>operação assistida por IA com supervisão humana ativa</strong>, utilizando a plataforma agentic <strong>Antigravity</strong> integrada a modelos de linguagem como <strong>ChatGPT, OpenAI API, Claude e Gemini</strong> para apoio em pesquisa, análise textual e prototipação ágil.
+            </p>
+            <p>
+              O fluxo operacional utiliza esses copilotos técnicos sob governança humana estrita, aplicando ferramentas de criação de imagens e vídeos de suporte para confecção de placeholders visuais sanitizados e livres de dados reais. As competências compreendem:
+            </p>
+            <ol class="case-list" style="list-style-type: decimal; padding-left: 20px;">
+              <li style="color: var(--text-secondary); margin-bottom: 12px;">
+                <strong>Estruturação e Governança de Projetos:</strong> O agente Antigravity propõe uma estrutura de diretórios padronizada com base em melhores práticas. O operador humano analisa e autoriza a criação das pastas fisicamente.
+              </li>
+              <li style="color: var(--text-secondary); margin-bottom: 12px;">
+                <strong>Geração de Texto e Documentação Técnica:</strong> Uso do ChatGPT e Claude para estruturar documentações técnicas geradas e revisadas em ciclos, como READMEs, relatórios de QA e manuais de processos.
+              </li>
+              <li style="color: var(--text-secondary); margin-bottom: 12px;">
+                <strong>Execução Controlada no Terminal:</strong> Comandos do sistema operacional (compilação de código ou testes de build locais) propostos pela IA são revisados e aprovados manualmente pelo operador antes da execução na console local.
+              </li>
+              <li style="color: var(--text-secondary); margin-bottom: 12px;">
+                <strong>Integração de Ferramentas e MCPs:</strong> Uso de servidores baseados no protocolo Model Context Protocol (MCP) e Chrome DevTools para automação de validações visuais e auditorias de erros de layout locais, agilizando correções.
+              </li>
+              <li style="color: var(--text-secondary); margin-bottom: 12px;">
+                <strong>Subagentes com Escopo Controlado:</strong> Lançamento de subagentes auxiliares para tarefas específicas e restritas de leitura e pesquisa conceitual, mantendo o código principal seguro contra edições indesejadas.
+              </li>
+              <li style="color: var(--text-secondary); margin-bottom: 12px;">
+                <strong>Prototipação e Desenvolvimento Assistido:</strong> Toda a reestruturação e auditoria de rotas estáticas deste próprio portfólio foram executadas com o apoio do Antigravity, aplicando testes rigorosos de compilação local antes do checkpoint.
+              </li>
+            </ol>
+          </div>
+
+          <!-- Arquitetura -->
+          <div class="case-section">
+            <h2 class="case-section-title">Lógica da Esteira Assistida</h2>
+            <p>Esquema das interações entre o Operador Humano e o Agente Antigravity no ciclo de desenvolvimento:</p>
+            
+            <div class="workflow-diagram-container">
+              <div class="workflow-node-grid">
+                <div class="workflow-node" style="border-color: var(--accent-blue);">
+                  Operador Humano (Direcionamento)
+                </div>
+                <span class="workflow-connector" data-icon="arrow-right"></span>
+                <div class="workflow-node">
+                  Agente Antigravity (Análise / Proposta)
+                </div>
+                <span class="workflow-connector" data-icon="arrow-right"></span>
+                <div class="workflow-node" style="border-color: var(--accent-amber);">
+                  Revisão Humana (Aprovação / Terminal)
+                </div>
+                <span class="workflow-connector" data-icon="arrow-right"></span>
+                <div class="workflow-node">
+                  Execução Local Segura
+                </div>
+                <span class="workflow-connector" data-icon="arrow-right"></span>
+                <div class="workflow-node" style="border-color: var(--accent-green);">
+                  Validação de Build (QA)
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Evidências -->
+          <div class="case-section">
+            <h2 class="case-section-title">Evidências e Demonstração</h2>
+            <p>Registros das rotinas de QA e validação executadas assistidas pelo copiloto operacional.</p>
+            
+            <!-- Galeria de Evidências -->
+            <div class="evidence-gallery">
+              
+              <!-- Card 1: Print da Estrutura -->
+              <div class="evidence-card">
+                <div class="evidence-card-media">
+                  <div class="media-placeholder" style="height: 200px; padding: 20px;">
+                    <span data-icon="code" style="color: var(--accent-blue);"></span>
+                    <p style="font-size: 0.8rem; margin-top: 8px; color: var(--text-muted);">workspace_structure.png</p>
+                  </div>
+                  <!-- Substituir pelo asset real quando disponível -->
+                </div>
+                <div class="evidence-card-body">
+                  <h3 class="evidence-card-title">Estrutura de Pastas e Arquivos</h3>
+                  <p class="evidence-card-description">Mapeamento e governança de arquivos locais estruturados dinamicamente pelo agente.</p>
+                </div>
+                <div class="evidence-card-footer">
+                  <span class="badge-sanitizado">Governança Técnica</span>
+                </div>
+              </div>
+
+              <!-- Card 2: Print de Terminal -->
+              <div class="evidence-card">
+                <div class="evidence-card-media">
+                  <div class="media-placeholder" style="height: 200px; padding: 20px;">
+                    <span data-icon="terminal" style="color: var(--accent-amber);"></span>
+                    <p style="font-size: 0.8rem; margin-top: 8px; color: var(--text-muted);">terminal_approval.png</p>
+                  </div>
+                  <!-- Substituir pelo asset real quando disponível -->
+                </div>
+                <div class="evidence-card-body">
+                  <h3 class="evidence-card-title">Aprovação de Comandos no Terminal</h3>
+                  <p class="evidence-card-description">Demonstração da interface do desenvolvedor onde comandos propostos aguardam confirmação física.</p>
+                </div>
+                <div class="evidence-card-footer">
+                  <span class="badge-sanitizado">Controle do Operador</span>
+                </div>
+              </div>
+
+              <!-- Card 3: Validação Visual -->
+              <div class="evidence-card" style="grid-column: span 2;">
+                <div class="evidence-card-media" style="min-height: 250px;">
+                  <div class="media-placeholder" style="height: 250px;">
+                    <div class="media-placeholder-icon">
+                      <span data-icon="shield-check" style="color: var(--accent-green);"></span>
+                    </div>
+                    <p style="font-size: 0.85rem; color: var(--text-muted); max-width: 300px; margin-top: 10px;">
+                      qa_build_validation.png<br>
+                      Relatório visual de compilação sem falhas locais e links validados.
+                    </p>
+                  </div>
+                  <!-- Substituir pelo asset real quando disponível -->
+                </div>
+                <div class="evidence-card-body">
+                  <h3 class="evidence-card-title">Checklist de QA Editorial e Build</h3>
+                  <p class="evidence-card-description">Validação estática de tags HTML, busca de termos exagerados e conformidade de dependências executadas antes do deploy estático.</p>
+                </div>
+                <div class="evidence-card-footer">
+                  <span class="badge-ficticio">Sem Dados de Clientes</span>
+                  <span class="badge-sanitizado">Conformidade Estrita</span>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Segurança e LGPD -->
+          <div class="case-section">
+            <h2 class="case-section-title">Políticas de Segurança e Limites da Automação</h2>
+            <div class="case-privacy-notice">
+              <div class="case-privacy-icon">
+                <span data-icon="shield-check" style="width: 24px; height: 24px;"></span>
+              </div>
+              <div class="case-privacy-text">
+                <strong>Nota de Segurança e Escopo:</strong> A operação é estritamente assistida e monitorada. A inteligência artificial propõe as alterações lógicas e o desenvolvedor humano valida e confirma cada etapa. Não há execução autônoma de alterações em ambientes de produção, nem exposição de chaves ou credenciais privadas no repositório do projeto.
+              </div>
+            </div>
+          </div>
+
+        </article>
+
+        <!-- Sidebar Ficha Técnica -->
+        <aside class="case-sidebar">
+          <div class="sidebar-widget">
+            <h3 class="widget-title">Ficha Técnica</h3>
+            <div class="widget-info-list">
+              <div class="widget-info-item">
+                <span class="widget-info-label">Ferramenta Base</span>
+                <span class="widget-info-value">Antigravity Platform</span>
+              </div>
+              <div class="widget-info-item">
+                <span class="widget-info-label">Inteligência Artificial</span>
+                <span class="widget-info-value">Copiloto Agentic (Modelos LLM)</span>
+              </div>
+              <div class="widget-info-item">
+                <span class="widget-info-label">Integrações</span>
+                <span class="widget-info-value">Chrome DevTools (MCP), Terminal, File System, Git</span>
+              </div>
+              <div class="widget-info-item">
+                <span class="widget-info-label">Lógica Interna</span>
+                <span class="widget-info-value">Operação Assistida por Prompts</span>
+              </div>
+              <div class="widget-info-item">
+                <span class="widget-info-label">Complexidade</span>
+                <span class="widget-info-value" style="color: var(--accent-purple);">Alta</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="sidebar-widget" style="background: rgba(255,255,255,0.01);">
+            <h3 class="widget-title">Resultados Observados</h3>
+            <div class="widget-info-list">
+              <div class="widget-info-item">
+                <span class="widget-info-label">Padronização</span>
+                <span class="widget-info-value">Estrutura de diretórios padronizada com semântica técnica</span>
+              </div>
+              <div class="widget-info-item">
+                <span class="widget-info-label">Rastreabilidade</span>
+                <span class="widget-info-value">Rastreabilidade documentada com comandos revisados e aprovados manualmente</span>
+              </div>
+              <div class="widget-info-item">
+                <span class="widget-info-label">Documentação</span>
+                <span class="widget-info-value">Documentação técnica gerada e revisada em ciclos</span>
+              </div>
+            </div>
+          </div>
+        </aside>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <span class="footer-logo">Matheus Ramalho &copy; <span id="current-year"></span></span>
+      <div class="footer-socials">
+        <a href="#contato" class="footer-icon-link" aria-label="LinkedIn" data-icon="linkedin"></a>
+        <a href="#contato" class="footer-icon-link" aria-label="GitHub" data-icon="github"></a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Entry Script -->
+  <script type="module" src="../../src/main.js"></script>
+</body>
+</html>

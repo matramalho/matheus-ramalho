@@ -1,0 +1,274 @@
+/* ==========================================================================
+   Case Studies Page Layout CSS — Matheus Automações IA
+   ========================================================================== */
+
+.case-page-header {
+  padding: 120px 0 60px;
+  border-bottom: 1px solid var(--border-light);
+  background: radial-gradient(circle at top right, rgba(56, 189, 248, 0.03) 0%, transparent 60%);
+}
+
+.case-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-headings);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--accent-blue);
+  margin-bottom: 32px;
+  transition: var(--transition-fast);
+}
+
+.case-back-link:hover {
+  transform: translateX(-4px);
+}
+
+.case-header-content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.case-title {
+  font-size: 2.5rem;
+  letter-spacing: -0.02em;
+}
+
+.case-subtitle {
+  font-size: 1.25rem;
+  color: var(--text-secondary);
+  max-width: 800px;
+}
+
+/* Duas Colunas do Caso */
+.case-content-layout {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 48px;
+  padding: 60px 0 100px;
+}
+
+.case-main-content {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+.case-section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.case-section-title {
+  font-size: 1.6rem;
+  letter-spacing: -0.01em;
+  border-left: 4px solid var(--accent-blue);
+  padding-left: 16px;
+}
+
+.case-section p {
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+/* Lista de Marcadores do Caso */
+.case-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.case-list-item {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.case-list-item-icon {
+  color: var(--accent-blue);
+  flex-shrink: 0;
+  margin-top: 4px;
+}
+
+/* Área de Arquitetura & Workflow */
+.workflow-diagram-container {
+  background: var(--surface);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  padding: 40px;
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.workflow-node-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.workflow-node {
+  background: var(--surface-soft);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-code);
+  font-size: 0.85rem;
+  transition: var(--transition-fast);
+}
+
+.workflow-node:hover {
+  border-color: var(--accent-blue);
+  transform: translateY(-2px);
+}
+
+.workflow-connector {
+  color: var(--text-muted);
+}
+
+/* Visual Placeholders (Fotos e Videos) */
+.evidence-media-card {
+  background: var(--surface);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.media-placeholder {
+  height: 350px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.01) 0%, rgba(255, 255, 255, 0.03) 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  border-bottom: 1px solid var(--border-light);
+  padding: 40px;
+  text-align: center;
+}
+
+.media-placeholder-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: rgba(56, 189, 248, 0.05);
+  border: 1px solid rgba(56, 189, 248, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent-blue);
+}
+
+.media-placeholder-title {
+  font-family: var(--font-headings);
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+.media-placeholder-desc {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  max-width: 400px;
+}
+
+.media-caption {
+  padding: 16px 24px;
+  background: rgba(0, 0, 0, 0.2);
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+/* Sidebar Ficha Técnica */
+.case-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.sidebar-widget {
+  background: var(--gradient-card);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.widget-title {
+  font-size: 1.1rem;
+  letter-spacing: -0.01em;
+  border-bottom: 1px solid var(--border-light);
+  padding-bottom: 12px;
+}
+
+.widget-info-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.widget-info-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.widget-info-label {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.widget-info-value {
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+/* Disclaimer de Privacidade / Segurança */
+.case-privacy-notice {
+  background: rgba(245, 158, 11, 0.02);
+  border: 1px dashed rgba(245, 158, 11, 0.3);
+  border-radius: var(--radius-md);
+  padding: 24px;
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.case-privacy-icon {
+  color: var(--accent-amber);
+  flex-shrink: 0;
+  margin-top: 4px;
+}
+
+.case-privacy-text {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+  .case-content-layout {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .case-title {
+    font-size: 2rem;
+  }
+}
