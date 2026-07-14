@@ -39,13 +39,15 @@ class WorkflowCanvas {
   }
 
   render() {
-    const { title, description, nodes } = this.workflow;
+    const { title, description, explainer, implementationNote, nodes } = this.workflow;
     this.mount.innerHTML = `
       <div class="workflow-canvas-heading">
         <div>
           <span class="workflow-canvas-eyebrow">Prova de conceito interativa</span>
           <h2 id="workflow-poc-title">${title}</h2>
           <p>${description}</p>
+          <p class="workflow-canvas-explainer">${explainer}</p>
+          <p class="workflow-canvas-implementation-note">${implementationNote}</p>
         </div>
         <button class="workflow-explore-button" type="button" aria-expanded="false" data-action="explore-mobile">
           Explorar etapas
@@ -103,8 +105,7 @@ class WorkflowCanvas {
         aria-label="Etapa ${index + 1}: ${node.title}. Categoria ${categoryLabels[node.category]}."
         style="--node-x:${node.x}px; --node-y:${node.y}px" data-category="${node.category}">
         <span class="workflow-node-icon" data-icon="${node.icon}" aria-hidden="true"></span>
-        <span class="workflow-node-copy"><small>${categoryLabels[node.category]}</small><strong>${node.shortTitle}</strong></span>
-        <span class="workflow-node-status">${node.status}</span>
+        <span class="workflow-node-copy"><strong>${node.shortTitle}</strong></span>
       </button>`;
   }
 
@@ -168,9 +169,7 @@ class WorkflowCanvas {
       const bend = Math.max(70, Math.abs(tx - sx) * 0.45);
       const direction = tx >= sx ? 1 : -1;
       const d = `M ${sx} ${sy} C ${sx + bend * direction} ${sy}, ${tx - bend * direction} ${ty}, ${tx} ${ty}`;
-      const lx = (sx + tx) / 2;
-      const ly = (sy + ty) / 2 - 8;
-      return `<g class="workflow-connection" data-type="${connection.type}"><path d="${d}" marker-end="url(#${markerId})"></path><text x="${lx}" y="${ly}">${connection.label}</text></g>`;
+      return `<g class="workflow-connection" data-type="${connection.type}"><path d="${d}" marker-end="url(#${markerId})"></path></g>`;
     }).join('');
     this.svg.innerHTML = `<defs><marker id="${markerId}" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z"></path></marker></defs>${paths}`;
   }

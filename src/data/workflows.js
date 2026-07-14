@@ -2,6 +2,8 @@ export const proposalAutomationWorkflow = {
   id: 'proposal-automation',
   title: 'Automação sanitizada de propostas',
   description: 'Fluxo demonstrativo para recepção, extração, validação e registro de documentos sem dados operacionais reais.',
+  explainer: 'Explore a arquitetura simplificada do workflow. Selecione cada etapa para entender sua função no processamento, na validação e no controle operacional.',
+  implementationNote: 'A arquitetura é apresentada de forma independente da ferramenta. A implementação original foi construída e validada no n8n.',
   world: { width: 1420, height: 820 },
   nodes: [
     {
@@ -150,7 +152,58 @@ export const proposalAutomationWorkflow = {
   ]
 };
 
-export const workflowCatalog = {
-  proposalAutomation: proposalAutomationWorkflow
+export const renewalReminderWorkflow = {
+  id: 'renewal-reminders',
+  title: 'Renovação e lembretes sanitizados',
+  description: 'Fluxo demonstrativo para identificar vencimentos, controlar elegibilidade e registrar lembretes sem dados operacionais reais.',
+  explainer: 'Explore a arquitetura simplificada do workflow. Selecione cada etapa para entender sua função no processamento, na validação e no controle operacional.',
+  implementationNote: 'A arquitetura é apresentada de forma independente da ferramenta. A implementação original foi construída e validada no n8n.',
+  world: { width: 1680, height: 940 },
+  nodes: [
+    { id: 'daily-schedule', title: 'Agendamento diário', shortTitle: 'Agendamento diário', category: 'entrada', description: 'Inicia uma verificação programada em uma janela diária demonstrativa.', technicalNote: 'O horário e a agenda reais não são expostos nesta representação.', x: 45, y: 90, icon: 'calendar', status: 'agendado' },
+    { id: 'read-sheet', title: 'Leitura da planilha', shortTitle: 'Ler base de controle', category: 'integracao', description: 'Lê registros sanitizados necessários para avaliar vencimentos e estados operacionais.', technicalNote: 'A demonstração não acessa planilhas, IDs ou dados pessoais.', x: 275, y: 90, icon: 'sheets', status: 'controlado' },
+    { id: 'calculate-days', title: 'Cálculo dos dias até o vencimento', shortTitle: 'Calcular vencimento', category: 'processamento', description: 'Calcula a diferença entre a data de referência e o vencimento informado em cada registro.', technicalNote: 'As datas apresentadas são conceituais e não correspondem a apólices reais.', x: 505, y: 90, icon: 'code', status: 'calculado' },
+    { id: 'validate-policy', title: 'Validação da apólice', shortTitle: 'Validar registro', category: 'validacao', description: 'Confere campos mínimos e consistência antes de permitir qualquer ação de acompanhamento.', technicalNote: 'Registros incompletos seguem para revisão, sem criação automática de lembretes.', x: 735, y: 90, icon: 'shield-check', status: 'validado' },
+    { id: 'eligible-filter', title: 'Filtro de itens elegíveis', shortTitle: 'Filtrar elegíveis', category: 'validacao', description: 'Mantém somente itens dentro da regra de prazo e das condições operacionais previstas.', technicalNote: 'Elegibilidade depende de regras explícitas e revisáveis.', x: 965, y: 90, icon: 'check-square', status: 'filtrado' },
+    { id: 'exclude-finished', title: 'Exclusão de concluídos ou inelegíveis', shortTitle: 'Excluir não elegíveis', category: 'fallback', description: 'Remove do processamento os itens já concluídos ou sem condição de continuidade.', technicalNote: 'A exclusão preserva rastreabilidade do motivo e não apaga o registro de origem.', x: 1195, y: 90, icon: 'check', status: 'controlado' },
+    { id: 'check-existing-ids', title: 'Verificação de IDs existentes', shortTitle: 'Verificar IDs', category: 'validacao', description: 'Consulta referências já registradas para evitar tarefas e eventos duplicados.', technicalNote: 'Os identificadores são abstratos nesta prova de conceito.', x: 1425, y: 90, icon: 'shield-check', status: 'verificado' },
+    { id: 'task-sync', title: 'Criação ou validação de Google Task', shortTitle: 'Sincronizar tarefa', category: 'integracao', description: 'Cria uma tarefa ou confirma a referência previamente associada ao item elegível.', technicalNote: 'A etapa não acessa contas, listas ou tarefas reais.', x: 1425, y: 345, icon: 'check-square', status: 'rastreável' },
+    { id: 'calendar-sync', title: 'Criação ou validação de evento no Google Calendar', shortTitle: 'Sincronizar evento', category: 'integracao', description: 'Cria um evento ou confirma o vínculo existente para o lembrete operacional.', technicalNote: 'Nenhum calendário compartilhado ou evento de produção é acessado.', x: 1195, y: 345, icon: 'calendar', status: 'rastreável' },
+    { id: 'apply-reminders', title: 'Aplicação de lembretes', shortTitle: 'Aplicar lembretes', category: 'processamento', description: 'Define lembretes previstos pela regra de acompanhamento antes da atualização final.', technicalNote: 'A cadência real pode ser revisada por uma pessoa responsável.', x: 965, y: 345, icon: 'calendar', status: 'configurado' },
+    { id: 'batch-wait', title: 'Processamento em lotes e waits', shortTitle: 'Lotes e esperas', category: 'processamento', description: 'Organiza execuções em grupos e introduz pausas controladas entre chamadas externas.', technicalNote: 'As pausas ajudam a respeitar limites de taxa e tornam o processo observável.', x: 735, y: 345, icon: 'calendar', status: 'controlado' },
+    { id: 'update-ids', title: 'Atualização dos IDs', shortTitle: 'Atualizar referências', category: 'armazenamento', description: 'Registra as referências de tarefa e evento que podem ser consultadas em ciclos posteriores.', technicalNote: 'A escrita é representada de forma abstrata, sem chaves ou identificadores reais.', x: 505, y: 345, icon: 'sheets', status: 'registrado' },
+    { id: 'update-status', title: 'Atualização do status', shortTitle: 'Atualizar status', category: 'armazenamento', description: 'Atualiza o estado operacional do item após as verificações e registros necessários.', technicalNote: 'O estado final permanece auditável e pode ser revisado por uma pessoa.', x: 275, y: 345, icon: 'sheets', status: 'atualizado' },
+    { id: 'final-result', title: 'Resultado final', shortTitle: 'Concluído', category: 'saida', description: 'Indica que a sequência prevista foi concluída com as evidências de controle registradas.', technicalNote: 'Conclusão técnica não substitui a decisão humana sobre a renovação.', x: 45, y: 345, icon: 'check', status: 'sucesso' },
+    { id: 'ineligible-item', title: 'Item inelegível', shortTitle: 'Inelegível', category: 'fallback', description: 'Representa um item que não atende à regra de prazo ou de integridade necessária para seguir.', technicalNote: 'O item fica disponível para análise, sem ações de calendário ou tarefas.', x: 965, y: 640, icon: 'alert-triangle', status: 'inelegível' },
+    { id: 'existing-task', title: 'Tarefa existente', shortTitle: 'Tarefa existente', category: 'saida', description: 'Representa a identificação de uma tarefa já associada ao item antes de criar uma nova.', technicalNote: 'A verificação reduz duplicidade e mantém o histórico operacional.', x: 1195, y: 640, icon: 'check-square', status: 'duplicado' },
+    { id: 'existing-event', title: 'Evento existente', shortTitle: 'Evento existente', category: 'saida', description: 'Representa a identificação de um evento já associado ao item antes de criar uma nova entrada.', technicalNote: 'O vínculo existente é preservado para evitar sobreposição de lembretes.', x: 1425, y: 640, icon: 'calendar', status: 'duplicado' },
+    { id: 'rate-limit-wait', title: 'Espera por rate limit', shortTitle: 'Aguardar limite', category: 'fallback', description: 'Representa uma pausa aplicada quando o ritmo de chamadas precisa ser reduzido.', technicalNote: 'A retomada é controlada e não implica repetição cega de solicitações.', x: 735, y: 640, icon: 'calendar', status: 'fallback' },
+    { id: 'renewal-error', title: 'Erro', shortTitle: 'Erro', category: 'erro', description: 'Agrupa exceções que exigem análise, correção ou nova tentativa controlada.', technicalNote: 'Falhas permanecem visíveis e rastreáveis para tratamento humano.', x: 505, y: 640, icon: 'alert-triangle', status: 'erro' }
+  ],
+  connections: [
+    { source: 'daily-schedule', target: 'read-sheet', type: 'standard', label: 'execução diária' },
+    { source: 'read-sheet', target: 'calculate-days', type: 'standard', label: 'registros' },
+    { source: 'calculate-days', target: 'validate-policy', type: 'standard', label: 'prazo calculado' },
+    { source: 'validate-policy', target: 'eligible-filter', type: 'standard', label: 'registro válido' },
+    { source: 'eligible-filter', target: 'exclude-finished', type: 'standard', label: 'elegível' },
+    { source: 'eligible-filter', target: 'ineligible-item', type: 'fallback', label: 'inelegível' },
+    { source: 'exclude-finished', target: 'check-existing-ids', type: 'standard', label: 'pendente' },
+    { source: 'check-existing-ids', target: 'task-sync', type: 'standard', label: 'verificar tarefa' },
+    { source: 'check-existing-ids', target: 'existing-task', type: 'fallback', label: 'tarefa existente' },
+    { source: 'task-sync', target: 'calendar-sync', type: 'standard', label: 'tarefa confirmada' },
+    { source: 'task-sync', target: 'existing-event', type: 'fallback', label: 'evento existente' },
+    { source: 'calendar-sync', target: 'apply-reminders', type: 'standard', label: 'evento confirmado' },
+    { source: 'apply-reminders', target: 'batch-wait', type: 'standard', label: 'lembretes definidos' },
+    { source: 'batch-wait', target: 'rate-limit-wait', type: 'fallback', label: 'rate limit' },
+    { source: 'batch-wait', target: 'update-ids', type: 'standard', label: 'lote concluído' },
+    { source: 'update-ids', target: 'update-status', type: 'standard', label: 'IDs atualizados' },
+    { source: 'update-status', target: 'final-result', type: 'standard', label: 'sucesso' },
+    { source: 'validate-policy', target: 'renewal-error', type: 'error', label: 'erro de validação' },
+    { source: 'calendar-sync', target: 'renewal-error', type: 'error', label: 'erro de integração' }
+  ]
 };
 
+export const workflowCatalog = {
+  proposalAutomation: proposalAutomationWorkflow,
+  renewalReminders: renewalReminderWorkflow
+};
