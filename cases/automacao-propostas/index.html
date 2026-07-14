@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="../../src/styles/main.css">
   <link rel="stylesheet" href="../../src/styles/components.css">
   <link rel="stylesheet" href="../../src/styles/cases.css">
+  <link rel="stylesheet" href="../../src/styles/workflow-canvas.css">
 </head>
 <body>
   <a class="skip-link" href="#main-content">Pular para o conteúdo principal</a>
@@ -53,6 +54,15 @@
         </div>
       </div>
     </header>
+
+    <section class="workflow-poc-section" aria-labelledby="workflow-poc-title">
+      <div class="container">
+        <div class="workflow-canvas-app" data-workflow-canvas="proposalAutomation">
+          <h2 id="workflow-poc-title">Arquitetura interativa do workflow</h2>
+          <p>Carregando representação sanitizada…</p>
+        </div>
+      </div>
+    </section>
 
     <!-- Case Body -->
     <section class="container">
@@ -304,5 +314,6 @@
 
   <!-- Entry Script -->
   <script type="module" src="../../src/main.js"></script>
+  <script type="module" src="../../src/components/workflow-canvas.js"></script>
 </body>
 </html>
