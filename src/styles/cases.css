@@ -30,6 +30,10 @@
   gap: 24px;
 }
 
+.case-header-content > div:first-child {
+  flex-wrap: wrap;
+}
+
 .case-title {
   font-size: 2.5rem;
   letter-spacing: -0.02em;

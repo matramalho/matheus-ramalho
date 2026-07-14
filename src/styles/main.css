@@ -2,9 +2,6 @@
    Design System & Base Styles — Matheus Automações IA
    ========================================================================== */
 
-/* Importação das Fontes (Facilmente alterável para local no futuro) */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Sora:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
-
 /* Variáveis de Design System (Tokens) */
 :root {
   /* Cores Base */
@@ -31,9 +28,9 @@
   --gradient-card: linear-gradient(145deg, rgba(17, 24, 39, 0.9) 0%, rgba(11, 16, 32, 0.95) 100%);
   
   /* Tipografia */
-  --font-headings: 'Sora', system-ui, -apple-system, sans-serif;
-  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
-  --font-code: 'JetBrains Mono', monospace;
+  --font-headings: "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body: "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-code: "Cascadia Code", "SFMono-Regular", Consolas, "Liberation Mono", monospace;
 
   /* Efeitos e Bordas */
   --radius-sm: 6px;
@@ -57,6 +54,10 @@ html {
   background-color: var(--bg-dark);
 }
 
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: var(--font-body);
   background: var(--gradient-dark);
@@ -65,6 +66,29 @@ body {
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
+}
+
+.skip-link {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  z-index: 2000;
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  background: var(--text-primary);
+  color: var(--bg-dark);
+  font-weight: 700;
+  transform: translateY(-160%);
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+:where(a, button, [tabindex]):focus-visible {
+  outline: 3px solid var(--accent-blue);
+  outline-offset: 4px;
+  border-radius: var(--radius-sm);
 }
 
 /* Tipografia Base */
@@ -174,3 +198,39 @@ img, video {
 .badge-purple { color: var(--accent-purple); border-color: rgba(167, 139, 250, 0.3); background: rgba(167, 139, 250, 0.05); }
 .badge-green { color: var(--accent-green); border-color: rgba(52, 211, 153, 0.3); background: rgba(52, 211, 153, 0.05); }
 .badge-amber { color: var(--accent-amber); border-color: rgba(245, 158, 11, 0.3); background: rgba(245, 158, 11, 0.05); }
+
+@media (max-width: 800px) {
+  .container {
+    padding-inline: 20px;
+  }
+
+  .section {
+    padding-block: 64px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding-inline: 16px;
+  }
+
+  .section {
+    padding-block: 52px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html,
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}

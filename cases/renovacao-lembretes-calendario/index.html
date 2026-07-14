@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="../../src/styles/cases.css">
 </head>
 <body>
+  <a class="skip-link" href="#main-content">Pular para o conteúdo principal</a>
 
   <!-- Header / Navigation -->
   <header class="navbar">
@@ -20,7 +21,8 @@
         <span data-icon="n8n" style="color: var(--accent-blue)"></span>
         Matheus Ramalho
       </a>
-      <nav class="nav-links">
+      <button class="nav-toggle" type="button" aria-label="Abrir menu de navegação" aria-expanded="false" aria-controls="primary-navigation"><span data-icon="menu"></span></button>
+      <nav class="nav-links" id="primary-navigation" aria-label="Navegação principal">
         <a href="/#cases" class="nav-link">Cases</a>
         <a href="/#capacidades" class="nav-link">Capacidades</a>
         <a href="/#processo" class="nav-link">Como Trabalho</a>
@@ -30,7 +32,7 @@
     </div>
   </header>
 
-  <main>
+  <main id="main-content">
     <!-- Case Header -->
     <header class="case-page-header">
       <div class="container">
@@ -296,8 +298,9 @@
     <div class="container">
       <span class="footer-logo">Matheus Ramalho &copy; <span id="current-year"></span></span>
       <div class="footer-socials">
-        <a href="#contato" class="footer-icon-link" aria-label="LinkedIn" data-icon="linkedin"></a>
-        <a href="#contato" class="footer-icon-link" aria-label="GitHub" data-icon="github"></a>
+        <a href="https://www.linkedin.com/in/matheus-ramalho-a24b0371" class="footer-icon-link" aria-label="LinkedIn de Matheus Ramalho (abre em nova aba)" target="_blank" rel="noopener noreferrer" data-icon="linkedin"></a>
+        <a href="mailto:matheushm97@gmail.com" class="footer-icon-link" aria-label="Enviar e-mail para Matheus Ramalho" data-icon="mail"></a>
+        <span class="footer-icon-link is-disabled" aria-label="GitHub indisponível" aria-disabled="true" role="img" data-icon="github"></span>
       </div>
     </div>
   </footer>

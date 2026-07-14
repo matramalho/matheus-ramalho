@@ -17,6 +17,8 @@
 </head>
 <body>
 
+  <a class="skip-link" href="#main-content">Pular para o conteúdo principal</a>
+
   <!-- Header / Navigation -->
   <header class="navbar">
     <div class="container">
@@ -24,33 +26,33 @@
         <span data-icon="n8n" style="color: var(--accent-blue)"></span>
         Matheus Ramalho
       </a>
-      <button class="nav-toggle" aria-label="Abrir menu de navegação" aria-expanded="false">
+      <button class="nav-toggle" type="button" aria-label="Abrir menu de navegação" aria-expanded="false" aria-controls="primary-navigation">
         <span data-icon="menu"></span>
       </button>
-      <nav class="nav-links">
+      <nav class="nav-links" id="primary-navigation" aria-label="Navegação principal">
         <a href="#cases" class="nav-link">Projetos</a>
         <a href="#capacidades" class="nav-link">Capacidades</a>
         <a href="#como-uso-ia" class="nav-link">Como uso IA</a>
         <a href="#processo" class="nav-link">Processo</a>
         <a href="#seguranca" class="nav-link">Segurança</a>
         <a href="#sobre" class="nav-link">Sobre</a>
-        <a href="#contato" class="btn btn-secondary" style="padding: 8px 16px; font-size: 0.85rem;">Contato</a>
+        <a href="#contato" class="btn btn-secondary nav-contact">Contato</a>
       </nav>
     </div>
   </header>
 
-  <main>
+  <main id="main-content">
     <!-- Hero Section -->
-    <section class="section" style="padding-top: 140px; padding-bottom: 60px;">
-      <div class="container" style="display: grid; grid-template-columns: 1.2fr 1fr; gap: 48px; align-items: center;">
-        <div>
-          <h1 style="font-size: 3rem; margin-bottom: 24px; letter-spacing: -0.03em; line-height: 1.15;">
+    <section class="section hero-section">
+      <div class="container hero-layout">
+        <div class="hero-content">
+          <h1 class="hero-title">
             Orquestração de IA, Agentes e <span class="text-gradient">Automação Aplicada</span>
           </h1>
-          <p style="font-size: 1.15rem; margin-bottom: 36px; max-width: 540px; line-height: 1.6;">
+          <p class="hero-intro">
             Desenvolvo automações, workflows, agentes assistidos, produtos digitais e documentação técnica utilizando n8n, IA operacional, APIs de modelos de linguagem e ferramentas modernas de produtividade — sempre com supervisão humana, validação e cuidado com dados sensíveis.
           </p>
-          <div style="display: flex; gap: 16px;">
+          <div class="hero-actions">
             <a href="#cases" class="btn btn-primary">
               Ver Projetos e Cases
               <span data-icon="arrow-right"></span>
@@ -68,7 +70,7 @@
               <span class="terminal-btn maximize"></span>
             </div>
             <div class="terminal-title">n8n-live-execution.log</div>
-            <div style="width: 42px;"></div>
+            <div class="terminal-header-spacer" aria-hidden="true"></div>
           </div>
           <div class="terminal-body" id="mock-terminal">
             <!-- Log de terminal injetado dinamicamente via main.js -->
@@ -191,8 +193,8 @@
           </article>
 
           <!-- Card Case 5 -->
-          <article class="case-card" style="grid-column: span 2;">
-            <div class="case-card-image" style="height: 180px;">
+          <article class="case-card case-card-featured">
+            <div class="case-card-image case-card-image-compact">
               <div class="case-card-placeholder">
                 <span data-icon="database" style="width: 40px; height: 40px; color: var(--accent-amber); display: block; margin: 0 auto 8px;"></span>
                 Organizador Financeiro Inteligente
@@ -262,7 +264,7 @@
           <h2 style="font-size: 2rem; margin-bottom: 16px;">Como uso IA na Prática</h2>
           <p>Uma abordagem sóbria e pragmática: IA como copiloto técnico sob supervisão e governança humana ativa.</p>
         </div>
-        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px;">
+        <div class="ai-practice-grid">
           <div class="bento-card" style="padding: 24px;">
             <h3 style="font-size: 1.15rem; color: var(--accent-blue); display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
               <span data-icon="shield-check" style="width: 20px; height: 20px;"></span>
@@ -420,14 +422,14 @@
       <div class="container" style="text-align: center; max-width: 600px;">
         <h2 style="font-size: 2rem; margin-bottom: 16px;">Interessado em Otimizar seus Processos?</h2>
         <p style="margin-bottom: 32px;">Conecte-se comigo no LinkedIn para conversarmos sobre arquitetura de dados, n8n ou automações corporativas.</p>
-        <div style="display: flex; justify-content: center; gap: 16px;">
-          <a href="#contato" class="btn btn-primary">
+        <div class="contact-actions">
+          <a href="https://www.linkedin.com/in/matheus-ramalho-a24b0371" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
             <span data-icon="linkedin"></span>
             Falar no LinkedIn
           </a>
-          <a href="#contato" class="btn btn-secondary">
-            <span data-icon="github"></span>
-            Ver GitHub
+          <a href="mailto:matheushm97@gmail.com" class="btn btn-secondary">
+            <span data-icon="mail"></span>
+            Enviar e-mail
           </a>
         </div>
       </div>
@@ -442,8 +444,9 @@
         Demonstração de portfólio profissional de automação com dados fictícios.
       </p>
       <div class="footer-socials">
-        <a href="#contato" class="footer-icon-link" aria-label="LinkedIn" data-icon="linkedin"></a>
-        <a href="#contato" class="footer-icon-link" aria-label="GitHub" data-icon="github"></a>
+        <a href="https://www.linkedin.com/in/matheus-ramalho-a24b0371" class="footer-icon-link" aria-label="LinkedIn de Matheus Ramalho (abre em nova aba)" target="_blank" rel="noopener noreferrer" data-icon="linkedin"></a>
+        <a href="mailto:matheushm97@gmail.com" class="footer-icon-link" aria-label="Enviar e-mail para Matheus Ramalho" data-icon="mail"></a>
+        <span class="footer-icon-link is-disabled" aria-label="GitHub indisponível" aria-disabled="true" role="img" data-icon="github"></span>
       </div>
     </div>
   </footer>
