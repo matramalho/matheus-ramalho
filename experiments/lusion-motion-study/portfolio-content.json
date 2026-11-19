@@ -1,0 +1,220 @@
+{
+  "version": 2,
+  "scope": "Camada editorial literal da home e resumos dos cases; artes conceituais e composição em refinamento.",
+  "identity": {
+    "name": "Matheus Ramalho",
+    "headline": "IA aplicada · AI Operations · Automação",
+    "intro": "Atuo na interseção entre IA aplicada, operações e desenvolvimento assistido. Estruturo workflows, contextos, agentes e produtos digitais para reduzir trabalho manual, organizar informação e melhorar a execução — com validação humana como parte do processo.",
+    "statement": "Transformo problemas operacionais em sistemas práticos com IA, automação e agentes.",
+    "source": "index.html: .hero-eyebrow, .hero-intro, .hero-title",
+    "sectionTitle": "IA aplicada com foco em execução e validação"
+  },
+  "projects": [
+    {
+      "title": "Automação de propostas e apólices com n8n e IA",
+      "summary": "Workflow desenvolvido para buscar PDFs no Google Drive, evitar reprocessamento, extrair dados estruturados, normalizar campos e registrar o resultado em uma base operacional.",
+      "status": "Implementado e validado",
+      "href": "/cases/automacao-propostas/",
+      "source": "cases/automacao-propostas/index.html",
+      "art": "art-core"
+    },
+    {
+      "title": "Automação de renovação, tarefas e calendário",
+      "summary": "Rotina diária que lê a base operacional, recalcula vencimentos, valida o estado dos registros e cria ou confirma tarefas e eventos de acompanhamento.",
+      "status": "Implementado e validado",
+      "href": "/cases/renovacao-lembretes-calendario/",
+      "source": "cases/renovacao-lembretes-calendario/index.html",
+      "art": "art-orbit"
+    },
+    {
+      "title": "Landing page de seguros com desenvolvimento assistido por IA",
+      "summary": "Projeto de marketing pessoal no segmento de seguros, desenvolvido com apoio de agentes de IA para pesquisa, arquitetura de informação, implementação e revisão visual.",
+      "status": "Em desenvolvimento avançado",
+      "href": "/cases/landing-page-raphael-seguros/",
+      "source": "cases/landing-page-raphael-seguros/index.html",
+      "art": "art-grid"
+    },
+    {
+      "title": "Orquestração de projetos com LLMs e agentes especializados",
+      "summary": "Estrutura aplicada para coordenar pesquisa, estratégia, execução, auditoria e documentação em projetos extensos, preservando contexto e responsabilidade humana.",
+      "status": "Aplicado e em evolução",
+      "href": "/cases/desenvolvimento-assistido-antigravity/",
+      "source": "cases/desenvolvimento-assistido-antigravity/index.html",
+      "art": "art-orbit"
+    },
+    {
+      "title": "Organizador financeiro modular",
+      "summary": "Aplicação autoral em desenvolvimento para centralizar informações financeiras e organizar diferentes rotinas em módulos.",
+      "status": "Em desenvolvimento",
+      "href": "/cases/organizador-financeiro/",
+      "source": "cases/organizador-financeiro/index.html",
+      "art": "art-core"
+    }
+  ],
+  "evaluation": {
+    "title": "Avaliação humana de resultados de IA",
+    "summary": "Experiência profissional remunerada na avaliação de resultados de IA, com atenção à qualidade, às instruções da tarefa e à justificativa das decisões.",
+    "href": "/ai-evaluation.html",
+    "source": "index.html: primeiro .case-card-featured"
+  },
+  "contacts": {
+    "email": "mailto:matheushm97@gmail.com",
+    "linkedin": "https://www.linkedin.com/in/matheus-ramalho-a24b0371",
+    "github": "https://github.com/matramalho"
+  },
+  "contactIntro": "Estou aberto a oportunidades em automação, AI Operations, operações digitais e funções híbridas entre negócio e tecnologia.",
+  "editorial": {
+    "capabilities": {
+      "title": "IA aplicada com foco em execução e validação",
+      "intro": "Minha atuação combina avaliação humana de resultados de IA, automação de processos, organização de contexto e desenvolvimento assistido. O foco é criar soluções que façam sentido para a operação.",
+      "items": [
+        {
+          "title": "Avaliação de IA e revisão humana",
+          "body": "Atuação remunerada na avaliação de respostas e resultados de IA, com revisão humana e justificativas conforme critérios da tarefa."
+        },
+        {
+          "title": "Automação de processos",
+          "body": "Desenho e implementação de workflows com etapas, condições, loops, controle de estado, deduplicação, retries, fallbacks e roteamento por resultado."
+        },
+        {
+          "title": "LLMs e agentes especializados",
+          "body": "Criação de prompts estruturados, agentes orientados a tarefas específicas e fluxos que utilizam modelos de linguagem para extração, pesquisa, síntese, documentação e apoio à execução."
+        },
+        {
+          "title": "Arquitetura de contexto",
+          "body": "Organização de bases documentais, instruções persistentes, regras de projeto e handoffs para reduzir perda de contexto e aumentar a consistência entre diferentes agentes e ferramentas."
+        },
+        {
+          "title": "Integrações e dados",
+          "body": "Uso aplicado de APIs, webhooks, JSON, regex, Google Workspace, planilhas e JavaScript em automações e rotinas operacionais."
+        },
+        {
+          "title": "Desenvolvimento assistido por IA",
+          "body": "Construção e refinamento de landing pages, protótipos e aplicações com apoio de agentes de programação, revisão visual, testes, Git e publicação em ambientes como Vercel."
+        },
+        {
+          "title": "Documentação e auditoria",
+          "body": "Criação de dossiês, instruções, checklists, troubleshooting, inventários de conteúdo e registros de decisão para manter projetos compreensíveis e rastreáveis."
+        }
+      ],
+      "source": "index.html#capacidades"
+    },
+    "practice": {
+      "title": "IA como parte do processo, não como resposta automática",
+      "intro": "Utilizo IA para acelerar pesquisa, estruturar informação, apoiar desenvolvimento e automatizar etapas específicas. As decisões relevantes continuam sendo revisadas com base no contexto, nas regras do projeto e no resultado esperado.",
+      "items": [
+        {
+          "title": "Problema antes da ferramenta",
+          "body": "Começo pela rotina, pelos dados disponíveis, pelas exceções e pelo resultado necessário. A escolha da ferramenta vem depois."
+        },
+        {
+          "title": "Escopo delimitado",
+          "body": "Agentes e modelos recebem objetivos, fontes, restrições e critérios de validação. Isso reduz respostas genéricas e mudanças fora do escopo."
+        },
+        {
+          "title": "Contexto compartilhado",
+          "body": "Projetos extensos são apoiados por documentos, instruções e registros de decisão que preservam continuidade entre conversas, agentes e ferramentas."
+        },
+        {
+          "title": "Validação e versionamento",
+          "body": "Mudanças relevantes são revisadas antes da integração ou publicação. Código e documentação são versionados para permitir comparação, correção e retomada."
+        }
+      ],
+      "source": "index.html#como-uso-ia"
+    },
+    "process": {
+      "title": "Do processo manual à solução documentada",
+      "items": [
+        {
+          "title": "Entendimento da rotina",
+          "body": "Mapeio entradas, saídas, responsáveis, ferramentas, tarefas repetitivas e pontos de falha."
+        },
+        {
+          "title": "Regras e arquitetura",
+          "body": "Defino condições, estados, integrações, limites, exceções e critérios de conclusão."
+        },
+        {
+          "title": "Construção incremental",
+          "body": "Implemento o menor fluxo funcional, valido o comportamento e só depois adiciono novas etapas."
+        },
+        {
+          "title": "Tratamento de exceções",
+          "body": "Incluo deduplicação, fallbacks, waits, caminhos de erro, validações e atualização de estado."
+        },
+        {
+          "title": "Testes e revisão",
+          "body": "Testo com dados controlados, verifico resultados e comparo a execução com o objetivo operacional."
+        },
+        {
+          "title": "Documentação e continuidade",
+          "body": "Registro decisões, estrutura, limitações e próximos passos para facilitar manutenção, handoff e evolução."
+        }
+      ],
+      "source": "index.html#processo"
+    },
+    "safety": {
+      "title": "Demonstrações públicas com dados protegidos",
+      "intro": "Os projetos deste portfólio são apresentados com dados fictícios, mascarados ou sanitizados. Arquivos públicos não devem conter credenciais, tokens, IDs de recursos internos, informações pessoais ou referências diretas a ambientes de produção.",
+      "items": [
+        "Credenciais e tokens removidos.",
+        "IDs de planilhas, pastas, calendários e contas substituídos.",
+        "Dados pessoais fictícios ou mascarados.",
+        "Workflows apresentados como demonstração técnica.",
+        "Revisão manual antes de qualquer publicação."
+      ],
+      "source": "index.html#seguranca"
+    },
+    "about": {
+      "title": "Sobre Matheus Ramalho",
+      "paragraphs": [
+        "Minha trajetória combina operações, atendimento, comercial, financeiro, marketing, pesquisa e análise de dados. Essa base me ajuda a enxergar automação a partir de quem executa e utiliza o processo no dia a dia.",
+        "Nos últimos anos, direcionei essa experiência para automação e IA aplicada. Desenvolvo workflows em n8n, integrações com Google Workspace, rotinas de extração e normalização de dados, agentes especializados e estruturas de contexto para projetos com LLMs.",
+        "Também utilizo desenvolvimento assistido por IA para transformar briefings e necessidades práticas em landing pages, protótipos, documentação e aplicações funcionais.",
+        "Minha atuação inclui avaliação remunerada de resultados de IA com revisão humana. Curso Inteligência Artificial Aplicada na PUC-PR e continuo desenvolvendo minha prática em AI Operations, automação e sistemas assistidos por agentes."
+      ],
+      "tags": [
+        "n8n",
+        "automação documental",
+        "Google Workspace",
+        "APIs e webhooks",
+        "JSON",
+        "regex",
+        "JavaScript aplicado",
+        "engenharia de prompts",
+        "LLMs em processos operacionais",
+        "agentes especializados",
+        "arquitetura de contexto",
+        "documentação técnica",
+        "desenvolvimento assistido",
+        "Git",
+        "Vite",
+        "Vercel",
+        "Docker",
+        "Ollama"
+      ],
+      "source": "index.html#sobre"
+    },
+    "history": {
+      "title": "Como meu uso de IA evoluiu",
+      "items": [
+        {
+          "year": "2023",
+          "body": "Início do uso contínuo de IA generativa em produtividade e comunicação."
+        },
+        {
+          "year": "2024",
+          "body": "Aplicação profissional em pesquisa, conteúdo, produto e criação multimodal."
+        },
+        {
+          "year": "2025",
+          "body": "Automações e workflows com agentes e contexto estruturado."
+        },
+        {
+          "year": "2026",
+          "body": "Avaliação remunerada de IA e desenvolvimento assistido por agentes."
+        }
+      ],
+      "source": "index.html#trajetoria"
+    }
+  }
+}

@@ -3,10 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Case: Extração de Apólices com n8n e IA — Matheus Ramalho</title>
-  <meta name="description" content="Estudo de caso detalhado da automação de extração e estruturação de propostas e apólices em PDF usando n8n, OpenAI Chat Model e Google Workspace.">
-  
-  <!-- Estilos Gerais e Específicos de Cases -->
+  <title>Automação de propostas e apólices com n8n e IA | Matheus Ramalho</title>
+  <meta name="description" content="Workflow desenvolvido para buscar PDFs no Google Drive, evitar reprocessamento, extrair dados estruturados, normalizar campos e registrar o resultado em uma base operacional.">
   <link rel="stylesheet" href="../../src/styles/main.css">
   <link rel="stylesheet" href="../../src/styles/components.css">
   <link rel="stylesheet" href="../../src/styles/cases.css">
@@ -14,306 +12,47 @@
 </head>
 <body>
   <a class="skip-link" href="#main-content">Pular para o conteúdo principal</a>
-
-  <!-- Header / Navigation -->
-  <header class="navbar">
-    <div class="container">
-      <a href="/" class="nav-logo">
-        <span data-icon="n8n" style="color: var(--accent-blue)"></span>
-        Matheus Ramalho
-      </a>
-      <button class="nav-toggle" type="button" aria-label="Abrir menu de navegação" aria-expanded="false" aria-controls="primary-navigation"><span data-icon="menu"></span></button>
-      <nav class="nav-links" id="primary-navigation" aria-label="Navegação principal">
-        <a href="/#cases" class="nav-link">Cases</a>
-        <a href="/#capacidades" class="nav-link">Capacidades</a>
-        <a href="/#processo" class="nav-link">Como Trabalho</a>
-        <a href="/#seguranca" class="nav-link">Segurança & LGPD</a>
-        <a href="/#sobre" class="nav-link">Sobre</a>
-      </nav>
-    </div>
-  </header>
-
+  <header class="navbar"><div class="container">
+    <a href="/" class="nav-logo"><span data-icon="n8n" style="color: var(--accent-blue)"></span>Matheus Ramalho</a>
+    <button class="nav-toggle" type="button" aria-label="Abrir menu de navegação" aria-expanded="false" aria-controls="primary-navigation"><span data-icon="menu"></span></button>
+    <nav class="nav-links" id="primary-navigation" aria-label="Navegação principal">
+      <a href="/#cases" class="nav-link">Projetos</a><a href="/#capacidades" class="nav-link">Capacidades</a><a href="/#como-uso-ia" class="nav-link">Como uso IA</a><a href="/#processo" class="nav-link">Processo</a><a href="/#seguranca" class="nav-link">Segurança</a><a href="/#sobre" class="nav-link">Sobre</a>
+    </nav>
+  </div></header>
   <main id="main-content">
-    <!-- Case Header -->
-    <header class="case-page-header">
-      <div class="container">
-        <a href="/" class="case-back-link">
-          <span data-icon="arrow-right" style="transform: rotate(180deg);"></span>
-          Voltar para a Home
-        </a>
-        <div class="case-header-content">
-          <div style="display: flex; gap: 8px;">
-            <span class="badge badge-blue">n8n</span>
-            <span class="badge badge-purple">IA Aplicada</span>
-            <span class="badge badge-green">Workspace</span>
-          </div>
-          <h1 class="case-title">Extração Estruturada de Dados de Apólices com n8n e IA</h1>
-          <p class="case-subtitle">
-            Workflow operacional que recebe PDFs fictícios de apólices, sanitiza duplicidades, usa IA para estruturar informações, valida campos críticos e grava dados limpos em planilha.
-          </p>
-        </div>
+    <header class="case-page-header"><div class="container">
+      <a href="/" class="case-back-link"><span data-icon="arrow-right" style="transform: rotate(180deg);"></span>Voltar para a Home</a>
+      <div class="case-header-content">
+        <div style="display: flex; gap: 8px;"><span class="badge badge-blue">n8n</span><span class="badge badge-purple">Google Drive</span><span class="badge badge-green">Google Sheets</span></div>
+        <span class="badge badge-sanitizado">Implementado e validado</span>
+        <h1 class="case-title">Automação de propostas e apólices com n8n e IA</h1>
+        <p class="case-subtitle">Workflow desenvolvido para buscar PDFs no Google Drive, evitar reprocessamento, extrair dados estruturados, normalizar campos e registrar o resultado em uma base operacional.</p>
       </div>
-    </header>
-
-    <section class="workflow-poc-section" aria-labelledby="workflow-poc-title">
-      <div class="container">
-        <div class="workflow-canvas-app" data-workflow-canvas="proposalAutomation">
-          <h2 id="workflow-poc-title">Arquitetura interativa do workflow</h2>
-          <p>Carregando representação sanitizada…</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Case Body -->
-    <section class="container">
-      <div class="case-content-layout">
-        <!-- Coluna Principal (Narrativa) -->
-        <article class="case-main-content">
-          
-          <!-- Problema -->
-          <div class="case-section">
-            <h2 class="case-section-title">O Problema Operacional</h2>
-            <p>
-              Em processos administrativos envolvendo corretagem ou análise de seguros, o recebimento de apólices e propostas em formato PDF exige digitação manual exaustiva. Esse modelo gera diversos problemas comuns:
-            </p>
-            <div class="case-list">
-              <div class="case-list-item">
-                <span data-icon="alert-triangle" class="case-list-item-icon"></span>
-                <p><strong>Gargalo de tempo:</strong> Colaboradores gastavam minutos digitando dados que já estavam no documento original.</p>
-              </div>
-              <div class="case-list-item">
-                <span data-icon="alert-triangle" class="case-list-item-icon"></span>
-                <p><strong>Erro de digitação:</strong> Risco frequente de digitação errada em campos como CPF/CNPJ, placas de veículos, datas de vigência e prêmios líquidos.</p>
-              </div>
-              <div class="case-list-item">
-                <span data-icon="alert-triangle" class="case-list-item-icon"></span>
-                <p><strong>Desperdício de API:</strong> Processar arquivos repetidos ou re-enviar propostas duplicadas para processamento de IA eleva custos de API sem necessidade.</p>
-              </div>
-            </div>
-          </div>
-
-          <!-- Solução -->
-          <div class="case-section">
-            <h2 class="case-section-title">A Solução Desenvolvida</h2>
-            <p>
-              Foi desenvolvida uma esteira automatizada utilizando o <strong>n8n</strong> que orquestra a captura, validação, extração inteligente e gravação segura dos dados sem qualquer digitação manual.
-            </p>
-            <p>
-              O fluxo segue etapas lógicas blindadas contra exceções:
-            </p>
-            <ol class="case-list" style="list-style-type: decimal; padding-left: 20px;">
-              <li style="color: var(--text-secondary); margin-bottom: 12px;">
-                <strong>Captura e Gatilho:</strong> O n8n monitora uma pasta específica no Google Drive. Assim que um arquivo PDF novo é adicionado, a execução inicia.
-              </li>
-              <li style="color: var(--text-secondary); margin-bottom: 12px;">
-                <strong>Verificação de Duplicidade:</strong> A deduplicação consulta a planilha usando <code>drive_file_id</code> antes da etapa de IA. Se o arquivo já estiver registrado, ele é enviado para a pasta de Duplicados e não passa por extração, IA ou gravação duplicada.
-              </li>
-              <li style="color: var(--text-secondary); margin-bottom: 12px;">
-                <strong>Extração de Texto:</strong> O conteúdo de texto bruto é extraído do PDF.
-              </li>
-              <li style="color: var(--text-secondary); margin-bottom: 12px;">
-                <strong>Estruturação por LLM (IA):</strong> O texto extraído é encaminhado à API do modelo de linguagem (OpenAI Chat Model) com um prompt estrito de extração em JSON estruturado (Structured Output). A IA devolve apenas os campos mapeados (ex: Nome Segurado, CPF fictício, Placa, Vigência, Coberturas, Valor).
-              </li>
-              <li style="color: var(--text-secondary); margin-bottom: 12px;">
-                <strong>Normalização e Escrita:</strong> Um Code Node normaliza datas para padrão brasileiro (DD/MM/AAAA) e valores monetários para float. Em seguida, atualiza a linha na planilha de controle do Sheets.
-              </li>
-              <li style="color: var(--text-secondary); margin-bottom: 12px;">
-                <strong>Organização de Arquivos:</strong> O arquivo original é movido para uma pasta de <em>/Processados</em> ou, em caso de falha de extração, para a pasta de <em>/Erros</em>.
-              </li>
-            </ol>
-          </div>
-
-          <!-- Arquitetura -->
-          <div class="case-section">
-            <h2 class="case-section-title">Arquitetura do Workflow</h2>
-            <p>Representação visual da lógica de conexões dos nós implementados no canvas n8n:</p>
-            
-            <div class="workflow-diagram-container">
-              <div class="workflow-node-grid">
-                <div class="workflow-node">
-                  <span data-icon="drive" style="color: var(--accent-green)"></span>
-                  Google Drive Trigger
-                </div>
-                <span class="workflow-connector" data-icon="arrow-right"></span>
-                <div class="workflow-node">
-                  <span data-icon="code" style="color: var(--accent-amber)"></span>
-                  Deduplicação (Validação Sheets)
-                </div>
-                <span class="workflow-connector" data-icon="arrow-right"></span>
-                <div class="workflow-node">
-                  <span data-icon="code" style="color: var(--accent-blue)"></span>
-                  PDF Text Parser
-                </div>
-                <span class="workflow-connector" data-icon="arrow-right"></span>
-                <div class="workflow-node">
-                  <span data-icon="n8n" style="color: var(--accent-purple)"></span>
-                  OpenAI Chat Model (Extração)
-                </div>
-                <span class="workflow-connector" data-icon="arrow-right"></span>
-                <div class="workflow-node">
-                  <span data-icon="code" style="color: var(--accent-amber)"></span>
-                  Sanitização JS
-                </div>
-                <span class="workflow-connector" data-icon="arrow-right"></span>
-                <div class="workflow-node">
-                  <span data-icon="sheets" style="color: var(--accent-green)"></span>
-                  Google Sheets Writer
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Evidências -->
-          <div class="case-section">
-            <h2 class="case-section-title">Evidências e Demonstração</h2>
-            <p>Abaixo estão os registros do workflow em funcionamento. Os caminhos de mídia estão estruturados e aguardam a inserção dos assets finais.</p>
-            
-            <!-- Galeria de Evidências -->
-            <div class="evidence-gallery">
-              
-              <!-- Card 1: Print do Workflow -->
-              <div class="evidence-card">
-                <div class="evidence-card-media">
-                  <div class="media-placeholder" style="height: 200px; padding: 20px;">
-                    <span data-icon="code" style="color: var(--accent-blue);"></span>
-                    <p style="font-size: 0.8rem; margin-top: 8px; color: var(--text-muted);">workflow_main.png</p>
-                  </div>
-                  <!-- Substituir pelo asset real: <img src="../../assets/cases/automacao-propostas/screenshots/workflow_main.png" alt="Workflow Canvas n8n"> -->
-                </div>
-                <div class="evidence-card-body">
-                  <h3 class="evidence-card-title">Estrutura do Canvas n8n</h3>
-                  <p class="evidence-card-description">Visão geral das conexões dos nós lógicos do fluxo de extração de apólices no n8n.</p>
-                </div>
-                <div class="evidence-card-footer">
-                  <span class="badge-sanitizado">Conformidade LGPD</span>
-                </div>
-              </div>
-
-              <!-- Card 2: Planilha de Destino -->
-              <div class="evidence-card">
-                <div class="evidence-card-media">
-                  <div class="media-placeholder" style="height: 200px; padding: 20px;">
-                    <span data-icon="sheets" style="color: var(--accent-green);"></span>
-                    <p style="font-size: 0.8rem; margin-top: 8px; color: var(--text-muted);">sheets_base.png</p>
-                  </div>
-                  <!-- Substituir pelo asset real: <img src="../../assets/cases/automacao-propostas/screenshots/sheets_base.png" alt="Planilha de Destino Google Sheets"> -->
-                </div>
-                <div class="evidence-card-body">
-                  <h3 class="evidence-card-title">Planilha de Controle</h3>
-                  <p class="evidence-card-description">Demonstração das colunas de dados fictícios gerados a partir do preenchimento da IA Base.</p>
-                </div>
-                <div class="evidence-card-footer">
-                  <span class="badge-ficticio">Dados Fictícios</span>
-                </div>
-              </div>
-
-              <!-- Card 3: Vídeo de Execução -->
-              <div class="evidence-card" style="grid-column: span 2;">
-                <div class="evidence-card-media" style="min-height: 250px;">
-                  <div class="media-placeholder" style="height: 250px;">
-                    <div class="media-placeholder-icon">
-                      <span data-icon="terminal"></span>
-                    </div>
-                    <p style="font-size: 0.85rem; color: var(--text-muted); max-width: 300px; margin-top: 10px;">
-                      demostracao.mp4<br>
-                      Arraste o vídeo demonstrativo revisado para a subpasta correspondente.
-                    </p>
-                  </div>
-                  <!-- Substituir pelo asset real: <video controls src="../../assets/cases/automacao-propostas/videos/demostracao.mp4"></video> -->
-                </div>
-                <div class="evidence-card-body">
-                  <h3 class="evidence-card-title">Fluxo de Execução em Tempo Real</h3>
-                  <p class="evidence-card-description">Vídeo demonstrando o gatilho, a extração estruturada de dados da apólice em PDF e a gravação automática no Sheets.</p>
-                </div>
-                <div class="evidence-card-footer">
-                  <span class="badge-ficticio">Ambiente de Teste</span>
-                  <span class="badge-sanitizado">Sem Dados Reais</span>
-                </div>
-              </div>
-
-            </div>
-          </div>
-
-          <!-- Segurança e LGPD -->
-          <div class="case-section">
-            <h2 class="case-section-title">Políticas de Segurança Aplicadas</h2>
-            <div class="case-privacy-notice">
-              <div class="case-privacy-icon">
-                <span data-icon="shield-check" style="width: 24px; height: 24px;"></span>
-              </div>
-              <div class="case-privacy-text">
-                <strong>Nota de Segurança e LGPD:</strong> Demonstrações realizadas em ambiente de teste com dados fictícios. Prints, vídeos e documentos devem ser revisados e mascarados antes de publicação pública.
-              </div>
-            </div>
-          </div>
-
-        </article>
-
-        <!-- Sidebar Ficha Técnica -->
-        <aside class="case-sidebar">
-          <div class="sidebar-widget">
-            <h3 class="widget-title">Ficha Técnica</h3>
-            <div class="widget-info-list">
-              <div class="widget-info-item">
-                <span class="widget-info-label">Ferramenta Base</span>
-                <span class="widget-info-value">n8n Orquestrador</span>
-              </div>
-              <div class="widget-info-item">
-                <span class="widget-info-label">Inteligência Artificial</span>
-                <span class="widget-info-value">OpenAI Chat Model (Structured JSON)</span>
-              </div>
-              <div class="widget-info-item">
-                <span class="widget-info-label">Integrações</span>
-                <span class="widget-info-value">Google Drive, Google Sheets</span>
-              </div>
-              <div class="widget-info-item">
-                <span class="widget-info-label">Lógica Interna</span>
-                <span class="widget-info-value">JavaScript (Validação & Data)</span>
-              </div>
-              <div class="widget-info-item">
-                <span class="widget-info-label">Complexidade</span>
-                <span class="widget-info-value" style="color: var(--accent-amber);">Média</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="sidebar-widget" style="background: rgba(255,255,255,0.01);">
-            <h3 class="widget-title">Resultados Observados</h3>
-            <div class="widget-info-list">
-              <div class="widget-info-item">
-                <span class="widget-info-label">Prevenção de Erros</span>
-                <span class="widget-info-value">Menor risco de retrabalho</span>
-              </div>
-              <div class="widget-info-item">
-                <span class="widget-info-label">Esforço Operacional</span>
-                <span class="widget-info-value">Redução relevante de trabalho manual</span>
-              </div>
-              <div class="widget-info-item">
-                <span class="widget-info-label">Organização</span>
-                <span class="widget-info-value">Classificação automática por status</span>
-              </div>
-            </div>
-          </div>
-        </aside>
-
-      </div>
-    </section>
+    </div></header>
+    <section class="workflow-poc-section" aria-labelledby="workflow-poc-title"><div class="container"><div class="workflow-canvas-app" data-workflow-canvas="proposalAutomation"><h2 id="workflow-poc-title">Arquitetura interativa do workflow</h2><p>Carregando representação sanitizada…</p></div></div></section>
+    <section class="container"><div class="case-content-layout"><article class="case-main-content">
+      <section class="case-section"><h2 class="case-section-title">Contexto</h2><p>A leitura manual de propostas e apólices exige localizar informações em documentos, transcrever campos, atualizar planilhas e organizar arquivos. Esse processo consome tempo e aumenta o risco de inconsistências e retrabalho.</p></section>
+      <section class="case-section"><h2 class="case-section-title">Solução</h2><ol class="case-list" style="list-style-type: decimal; padding-left: 20px;">
+        <li style="color: var(--text-secondary); margin-bottom: 12px;">Um gatilho agendado inicia a busca por PDFs em uma pasta do Google Drive.</li>
+        <li style="color: var(--text-secondary); margin-bottom: 12px;">O fluxo carrega configurações e processa os arquivos um por vez.</li>
+        <li style="color: var(--text-secondary); margin-bottom: 12px;">A planilha é consultada pelo <code>drive_file_id</code> para evitar reprocessamento.</li>
+        <li style="color: var(--text-secondary); margin-bottom: 12px;">Documentos duplicados são movidos para uma pasta específica e não passam pela etapa de IA.</li>
+        <li style="color: var(--text-secondary); margin-bottom: 12px;">Arquivos inéditos são baixados e têm o texto extraído.</li>
+        <li style="color: var(--text-secondary); margin-bottom: 12px;">O conteúdo é reduzido e organizado antes de ser enviado ao modelo de linguagem.</li>
+        <li style="color: var(--text-secondary); margin-bottom: 12px;">Um extrator com LLM transforma o texto em uma estrutura JSON predefinida.</li>
+        <li style="color: var(--text-secondary); margin-bottom: 12px;">JavaScript normaliza datas, valores, CPF/CNPJ, telefone, seguradora, ramo e status.</li>
+        <li style="color: var(--text-secondary); margin-bottom: 12px;">Para seguros de automóvel, uma regra por regex atua como fallback para placas válidas.</li>
+        <li style="color: var(--text-secondary); margin-bottom: 12px;">Registros válidos são gravados no Google Sheets e enviados para a pasta de processados.</li>
+        <li style="color: var(--text-secondary); margin-bottom: 12px;">Exceções são registradas e os documentos correspondentes seguem para a pasta de erros.</li>
+        <li style="color: var(--text-secondary); margin-bottom: 12px;">Ao final, o fluxo retorna ao loop para processar o próximo item.</li>
+      </ol></section>
+      <section class="case-section"><h2 class="case-section-title">Resultado observável</h2><p>O workflow está funcional e foi testado repetidas vezes. Ele preenche a base estruturada, organiza os documentos por resultado e reduz de forma relevante a leitura, digitação e classificação manual.</p></section>
+      <section class="case-section"><h2 class="case-section-title">Sobre a visualização</h2><p>A arquitetura interativa apresenta uma visão simplificada do processo e de suas principais etapas.</p></section>
+      <section class="case-section"><div class="case-privacy-notice"><div class="case-privacy-icon"><span data-icon="shield-check" style="width: 24px; height: 24px;"></span></div><div class="case-privacy-text">Os projetos deste portfólio são apresentados com dados fictícios, mascarados ou sanitizados. Arquivos públicos não devem conter credenciais, tokens, IDs de recursos internos, informações pessoais ou referências diretas a ambientes de produção.</div></div></section>
+      <section class="evidence-gallery" hidden aria-hidden="true"></section>
+    </article><aside class="case-sidebar"><div class="sidebar-widget"><h3 class="widget-title">Ficha Técnica</h3><div class="widget-info-list"><div class="widget-info-item"><span class="widget-info-label">Stack</span><span class="widget-info-value">n8n · Google Drive · Google Sheets · OpenAI API · JavaScript · JSON · Regex</span></div><div class="widget-info-item"><span class="widget-info-label">Status</span><span class="widget-info-value">Implementado e validado</span></div></div></div></aside></div></section>
   </main>
-
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container">
-      <span class="footer-logo">Matheus Ramalho &copy; <span id="current-year"></span></span>
-      <div class="footer-socials">
-        <a href="https://www.linkedin.com/in/matheus-ramalho-a24b0371" class="footer-icon-link" aria-label="LinkedIn de Matheus Ramalho (abre em nova aba)" target="_blank" rel="noopener noreferrer" data-icon="linkedin"></a>
-        <a href="mailto:matheushm97@gmail.com" class="footer-icon-link" aria-label="Enviar e-mail para Matheus Ramalho" data-icon="mail"></a>
-        <a href="https://github.com/matramalho" class="footer-icon-link" aria-label="GitHub de Matheus Ramalho (abre em nova aba)" target="_blank" rel="noopener noreferrer" data-icon="github"></a>
-      </div>
-    </div>
-  </footer>
-
-  <!-- Entry Script -->
-  <script type="module" src="../../src/main.js"></script>
-  <script type="module" src="../../src/components/workflow-canvas.js"></script>
+  <footer class="footer"><div class="container"><span class="footer-logo">Matheus Ramalho &copy; <span id="current-year"></span></span><div class="footer-socials"><a href="https://www.linkedin.com/in/matheus-ramalho-a24b0371" class="footer-icon-link" aria-label="LinkedIn de Matheus Ramalho (abre em nova aba)" target="_blank" rel="noopener noreferrer" data-icon="linkedin"></a><a href="mailto:matheushm97@gmail.com" class="footer-icon-link" aria-label="Enviar e-mail para Matheus Ramalho" data-icon="mail"></a><a href="https://github.com/matramalho" class="footer-icon-link" aria-label="GitHub de Matheus Ramalho (abre em nova aba)" target="_blank" rel="noopener noreferrer" data-icon="github"></a></div></div></footer>
+  <script type="module" src="../../src/main.js"></script><script type="module" src="../../src/components/workflow-canvas.js"></script>
 </body>
 </html>

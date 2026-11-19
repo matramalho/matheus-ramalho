@@ -1,266 +1,91 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Case: Organizador Financeiro Inteligente — Matheus Ramalho</title>
-  <meta name="description" content="Estudo de caso do desenvolvimento do Organizador Financeiro Inteligente, projeto autoral focado em privacidade, estruturação de dados e desenvolvimento incremental.">
-  
-  <!-- Estilos Gerais e Específicos de Cases -->
-  <link rel="stylesheet" href="../../src/styles/main.css">
-  <link rel="stylesheet" href="../../src/styles/components.css">
-  <link rel="stylesheet" href="../../src/styles/cases.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Organizador financeiro modular | Matheus Ramalho</title>
+<meta name="description" content="Aplicação autoral em desenvolvimento para centralizar informações financeiras e organizar diferentes rotinas em módulos.">
+<link rel="stylesheet" href="../../src/styles/main.css">
+<link rel="stylesheet" href="../../src/styles/components.css">
+<link rel="stylesheet" href="../../src/styles/cases.css">
 </head>
 <body>
-  <a class="skip-link" href="#main-content">Pular para o conteúdo principal</a>
-
-  <!-- Header / Navigation -->
-  <header class="navbar">
-    <div class="container">
-      <a href="/" class="nav-logo">
-        <span data-icon="n8n" style="color: var(--accent-blue)"></span>
-        Matheus Ramalho
-      </a>
-      <button class="nav-toggle" type="button" aria-label="Abrir menu de navegação" aria-expanded="false" aria-controls="primary-navigation"><span data-icon="menu"></span></button>
-      <nav class="nav-links" id="primary-navigation" aria-label="Navegação principal">
-        <a href="/#cases" class="nav-link">Projetos</a>
-        <a href="/#capacidades" class="nav-link">Capacidades</a>
-        <a href="/#como-uso-ia" class="nav-link">Uso de IA</a>
-        <a href="/#processo" class="nav-link">Processo</a>
-        <a href="/#seguranca" class="nav-link">Segurança & LGPD</a>
-        <a href="/#sobre" class="nav-link">Sobre</a>
-      </nav>
-    </div>
-  </header>
-
-  <main id="main-content">
-    <!-- Case Header -->
-    <header class="case-page-header">
-      <div class="container">
-        <a href="/" class="case-back-link">
-          <span data-icon="arrow-right" style="transform: rotate(180deg);"></span>
-          Voltar para a Home
-        </a>
-        <div class="case-header-content">
-          <div style="display: flex; gap: 8px; align-items: center;">
-            <span class="badge badge-blue">JavaScript (ES6)</span>
-            <span class="badge badge-purple">Modelagem de Dados</span>
-            <span class="badge badge-green">Privacidade</span>
-            <span class="badge-ficticio" style="border-color: rgba(245, 158, 11, 0.4); color: var(--accent-amber); background: rgba(245, 158, 11, 0.05);">Em Desenvolvimento</span>
-          </div>
-          <h1 class="case-title">Organizador Financeiro Inteligente</h1>
-          <p class="case-subtitle">
-            Projeto autoral ativo de controle financeiro pessoal, projetado para garantir máxima privacidade de dados, estruturação relacional e importação assistida de extratos.
-          </p>
-        </div>
-      </div>
-    </header>
-
-    <!-- Case Body -->
-    <section class="container">
-      <div class="case-content-layout">
-        <!-- Coluna Principal (Narrativa) -->
-        <article class="case-main-content">
-          
-          <!-- Contexto de Status -->
-          <div class="case-section" style="border: 1px solid rgba(245, 158, 11, 0.2); background: rgba(245, 158, 11, 0.02); padding: 24px; border-radius: var(--radius-md);">
-            <h3 style="font-size: 1.15rem; color: var(--accent-amber); margin-bottom: 8px; display: flex; align-items: center; gap: 8px;">
-              <span data-icon="alert-triangle"></span>
-              Status: Projeto em Desenvolvimento Ativo
-            </h3>
-            <p style="font-size: 0.95rem; line-height: 1.6; color: var(--text-secondary); margin: 0;">
-              Este é um projeto pessoal em andamento, construído sob a premissa de desenvolvimento incremental. As seções a seguir detalham a arquitetura técnica já modelada, a sanitização de dados e os recursos de importação local implementados, sem promessas de funcionalidades não construídas.
-            </p>
-          </div>
-
-          <!-- Problema -->
-          <div class="case-section">
-            <h2 class="case-section-title">O Problema Operacional</h2>
-            <p>
-              A maioria das aplicações de controle financeiro no mercado exige a sincronização automática de contas bancárias por meio de APIs de terceiros. Isso acarreta duas dores principais:
-            </p>
-            <div class="case-list">
-              <div class="case-list-item">
-                <span data-icon="alert-triangle" class="case-list-item-icon"></span>
-                <p><strong>Exposição de Dados Sensíveis:</strong> Compartilhar credenciais bancárias e dados de transações com empresas privadas eleva o risco de vazamentos e violações de privacidade.</p>
-              </div>
-              <div class="case-list-item">
-                <span data-icon="alert-triangle" class="case-list-item-icon"></span>
-                <p><strong>Inconsistência de Múltiplos Extratos:</strong> Importar manualmente extratos de diferentes bancos (com colunas e formatações distintas) gera duplicidades e exige digitação corretiva constante.</p>
-              </div>
-              <div class="case-list-item">
-                <span data-icon="alert-triangle" class="case-list-item-icon"></span>
-                <p><strong>Falta de Autonomia Lógica:</strong> Sistemas fechados limitam o controle do usuário sobre regras específicas de categorização de despesas e planejamento de provisões fixas.</p>
-              </div>
-            </div>
-          </div>
-
-          <!-- Solução -->
-          <div class="case-section">
-            <h2 class="case-section-title">A Solução Desenvolvida (Premissas e Estrutura)</h2>
-            <p>
-              Foi desenhado e está sob **desenvolvimento incremental** um <strong>Organizador Financeiro Privado</strong> que elimina a necessidade de integração direta com bancos. A aplicação está planejada para operar de forma local e assíncrona, consumindo arquivos de extratos em formato CSV exportados de forma segura pelo próprio usuário.
-            </p>
-            <p>
-              A arquitetura baseia-se nos seguintes pilares técnicos, projetados para etapas incrementais:
-            </p>
-            <ol class="case-list" style="list-style-type: decimal; padding-left: 20px;">
-              <li style="color: var(--text-secondary); margin-bottom: 12px;">
-                <strong>Privacidade por Padrão (Premissa):</strong> Armazenamento em banco de dados local. Toda a lógica de processamento e consolidação de despesas está planejada para rodar inteiramente no ambiente do próprio usuário, sem conexões externas ou tráfego de dados para servidores terceiros.
-              </li>
-              <li style="color: var(--text-secondary); margin-bottom: 12px;">
-                <strong>Importador Estruturado Local (Em Validação):</strong> Lógica em JavaScript para ler arquivos CSV locais, sanitizar campos de data e valores e descartar transações duplicadas de forma assistida.
-              </li>
-              <li style="color: var(--text-secondary); margin-bottom: 12px;">
-                <strong>Categorização Lógica (Planejado):</strong> Mecanismo de mapeamento relacional projetado para agrupar despesas com base em palavras-chave configuradas pelo usuário.
-              </li>
-              <li style="color: var(--text-secondary); margin-bottom: 12px;">
-                <strong>Desenvolvimento Incremental:</strong> O primeiro ciclo concentrou-se no estudo de modelagem relacional de tabelas de contas, categorias e transações, seguido pelo rascunho de scripts locais de sanitização de CSVs brutos, com validações no console.
-              </li>
-            </ol>
-          </div>
-
-          <!-- Arquitetura Lógica de Dados -->
-          <div class="case-section">
-            <h2 class="case-section-title">Fluxo Lógico Local de Dados</h2>
-            <p>Esquema do processamento isolado e local da importação do extrato:</p>
-            
-            <div class="workflow-diagram-container">
-              <div class="workflow-node-grid">
-                <div class="workflow-node" style="border-color: var(--accent-amber);">
-                  Extrato CSV Bruto (Exportado localmente)
-                </div>
-                <span class="workflow-connector" data-icon="arrow-right"></span>
-                <div class="workflow-node">
-                  Normalizador JS (Limpeza & Deduplicação)
-                </div>
-                <span class="workflow-connector" data-icon="arrow-right"></span>
-                <div class="workflow-node" style="border-color: var(--accent-blue);">
-                  Categorizador Relacional (Regras de Negócio)
-                </div>
-                <span class="workflow-connector" data-icon="arrow-right"></span>
-                <div class="workflow-node">
-                  Banco de Dados Relacional Local
-                </div>
-                <span class="workflow-connector" data-icon="arrow-right"></span>
-                <div class="workflow-node" style="border-color: var(--accent-green);">
-                  Interface do Usuário (Console / Dashboard)
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Evidências de Mídia -->
-          <div class="case-section">
-            <h2 class="case-section-title">Evidências e Protótipos</h2>
-            <p>Mocks de interfaces e diagramas de classes estruturados no ambiente de desenvolvimento.</p>
-            
-            <div class="evidence-gallery">
-              
-              <!-- Card Placeholder 1 -->
-              <div class="evidence-card" style="grid-column: span 2;">
-                <div class="evidence-card-media" style="min-height: 250px;">
-                  <div class="media-placeholder" style="height: 250px;">
-                    <div class="media-placeholder-icon">
-                      <span data-icon="database"></span>
-                    </div>
-                    <p style="font-size: 0.85rem; color: var(--text-muted); max-width: 380px; margin-top: 10px;">
-                      database_schema_preview.png<br>
-                      Aguardando finalização de protótipos de tela para exibição do dashboard local com dados de teste puramente mockados.
-                    </p>
-                  </div>
-                </div>
-                <div class="evidence-card-body">
-                  <h3 class="evidence-card-title">Modelagem de Banco de Dados Local</h3>
-                  <p class="evidence-card-description">Visão geral do esquema físico relacional conectando categorias de despesa, contas ativas e registros de extrato.</p>
-                </div>
-                <div class="evidence-card-footer">
-                  <span class="badge-ficticio" style="border-color: rgba(245, 158, 11, 0.4); color: var(--accent-amber); background: rgba(245, 158, 11, 0.05);">Em Desenvolvimento</span>
-                </div>
-              </div>
-
-            </div>
-          </div>
-
-          <!-- Segurança e LGPD -->
-          <div class="case-section">
-            <h2 class="case-section-title">Políticas de Segurança e Confidencialidade</h2>
-            <div class="case-privacy-notice">
-              <div class="case-privacy-icon">
-                <span data-icon="shield-check" style="width: 24px; height: 24px;"></span>
-              </div>
-              <div class="case-privacy-text">
-                <strong>Nota de Segurança Estrita:</strong> Este portfólio não armazena nem gerencia dados financeiros reais do desenvolvedor ou de terceiros. Toda modelagem apresentada utiliza bancos de dados mockados com dados de teste. A aplicação não faz conexões remotas não auditadas de envio de informações.
-              </div>
-            </div>
-          </div>
-
-        </article>
-
-        <!-- Sidebar Ficha Técnica -->
-        <aside class="case-sidebar">
-          <div class="sidebar-widget">
-            <h3 class="widget-title">Ficha Técnica</h3>
-            <div class="widget-info-list">
-              <div class="widget-info-item">
-                <span class="widget-info-label">Ferramenta Base</span>
-                <span class="widget-info-value">Vanilla JavaScript (ES6)</span>
-              </div>
-              <div class="widget-info-item">
-                <span class="widget-info-label">Banco de Dados</span>
-                <span class="widget-info-value">Modelagem Relacional (Local)</span>
-              </div>
-              <div class="widget-info-item">
-                <span class="widget-info-label">Integrações</span>
-                <span class="widget-info-value">Importador de Arquivo Local (CSV)</span>
-              </div>
-              <div class="widget-info-item">
-                <span class="widget-info-label">Lógica de Limpeza</span>
-                <span class="widget-info-value">JavaScript Code Node RegExp</span>
-              </div>
-              <div class="widget-info-item">
-                <span class="widget-info-label">Complexidade</span>
-                <span class="widget-info-value" style="color: var(--accent-amber);">Média</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="sidebar-widget" style="background: rgba(255,255,255,0.01);">
-            <h3 class="widget-title">Status do Projeto</h3>
-            <div class="widget-info-list">
-              <div class="widget-info-item">
-                <span class="widget-info-label">Modelagem Relacional</span>
-                <span class="widget-info-value" style="color: var(--accent-amber);">Em validação</span>
-              </div>
-              <div class="widget-info-item">
-                <span class="widget-info-label">Parser de CSV</span>
-                <span class="widget-info-value" style="color: var(--accent-amber);">Em validação</span>
-              </div>
-              <div class="widget-info-item">
-                <span class="widget-info-label">Interface Dashboard</span>
-                <span class="widget-info-value" style="color: var(--accent-blue);">Planejado</span>
-              </div>
-            </div>
-          </div>
-        </aside>
-
-      </div>
-    </section>
-  </main>
-
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container">
-      <span class="footer-logo">Matheus Ramalho &copy; <span id="current-year"></span></span>
-      <div class="footer-socials">
-        <a href="https://www.linkedin.com/in/matheus-ramalho-a24b0371" class="footer-icon-link" aria-label="LinkedIn de Matheus Ramalho (abre em nova aba)" target="_blank" rel="noopener noreferrer" data-icon="linkedin"></a>
-        <a href="mailto:matheushm97@gmail.com" class="footer-icon-link" aria-label="Enviar e-mail para Matheus Ramalho" data-icon="mail"></a>
-        <a href="https://github.com/matramalho" class="footer-icon-link" aria-label="GitHub de Matheus Ramalho (abre em nova aba)" target="_blank" rel="noopener noreferrer" data-icon="github"></a>
-      </div>
-    </div>
-  </footer>
-
-  <!-- Entry Script -->
-  <script type="module" src="../../src/main.js"></script>
+<a class="skip-link" href="#main-content">Pular para o conteúdo principal</a>
+<header class="navbar">
+<div class="container">
+<a href="/" class="nav-logo">
+<span data-icon="n8n" style="color:var(--accent-blue)">
+</span>Matheus Ramalho</a>
+<button class="nav-toggle" type="button" aria-label="Abrir menu de navegação" aria-expanded="false" aria-controls="primary-navigation">
+<span data-icon="menu">
+</span>
+</button>
+<nav class="nav-links" id="primary-navigation" aria-label="Navegação principal">
+<a href="/#cases" class="nav-link">Projetos</a>
+<a href="/#capacidades" class="nav-link">Capacidades</a>
+<a href="/#como-uso-ia" class="nav-link">Como uso IA</a>
+<a href="/#processo" class="nav-link">Processo</a>
+<a href="/#seguranca" class="nav-link">Segurança</a>
+<a href="/#sobre" class="nav-link">Sobre</a>
+</nav>
+</div>
+</header>
+<main id="main-content">
+<header class="case-page-header">
+<div class="container">
+<a href="/" class="case-back-link">
+<span data-icon="arrow-right" style="transform:rotate(180deg)">
+</span>Voltar para a Home</a>
+<div class="case-header-content">
+<span class="badge badge-amber">Em desenvolvimento</span>
+<h1 class="case-title">Organizador financeiro modular</h1>
+<p class="case-subtitle">Aplicação autoral em desenvolvimento para centralizar informações financeiras e organizar diferentes rotinas em módulos.</p>
+</div>
+</div>
+</header>
+<section class="container">
+<div class="case-content-layout">
+<article class="case-main-content">
+<section class="case-section">
+<h2 class="case-section-title">Estado atual</h2>
+<p>A interface principal e parte dos módulos já foram construídas com apoio de IA. O protótipo local permite registrar receitas e despesas e mantém o estado no navegador. O projeto continua em desenvolvimento.</p>
+</section>
+<section class="case-section">
+<h2 class="case-section-title">Meu papel</h2>
+<p>Organizo os requisitos e as decisões de produto, acompanho a construção assistida por IA e reviso a interface e o comportamento dos módulos.</p>
+</section>
+<section class="case-section">
+<h2 class="case-section-title">Próximos passos</h2>
+<p>Integrações, estrutura de dados em nuvem, regras de negócio e validações estão no plano de evolução. O protótipo apresentado ainda não é um sistema em produção.</p>
+</section>
+<section class="evidence-gallery" hidden aria-hidden="true">
+</section>
+</article>
+<aside class="case-sidebar">
+<div class="sidebar-widget">
+<h3 class="widget-title">Status</h3>
+<span class="widget-info-value">Em desenvolvimento</span>
+</div>
+</aside>
+</div>
+</section>
+</main>
+<footer class="footer">
+<div class="container">
+<span class="footer-logo">Matheus Ramalho &copy; <span id="current-year">
+</span>
+</span>
+<div class="footer-socials">
+<a href="https://www.linkedin.com/in/matheus-ramalho-a24b0371" class="footer-icon-link" aria-label="LinkedIn de Matheus Ramalho (abre em nova aba)" target="_blank" rel="noopener noreferrer" data-icon="linkedin">
+</a>
+<a href="mailto:matheushm97@gmail.com" class="footer-icon-link" aria-label="Enviar e-mail para Matheus Ramalho" data-icon="mail">
+</a>
+<a href="https://github.com/matramalho" class="footer-icon-link" aria-label="GitHub de Matheus Ramalho (abre em nova aba)" target="_blank" rel="noopener noreferrer" data-icon="github">
+</a>
+</div>
+</div>
+</footer>
+<script type="module" src="../../src/main.js">
+</script>
 </body>
 </html>

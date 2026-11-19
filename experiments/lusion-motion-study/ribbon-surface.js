@@ -1,0 +1,21 @@
+// Original tubular mesh sampled from our SVG route. SVG remains the fallback.
+export function createRibbonSurface(svg){
+  const canvas=document.createElement('canvas');canvas.className='ribbon-surface';canvas.setAttribute('aria-hidden','true');
+  const gl=canvas.getContext('webgl',{alpha:true,antialias:true,premultipliedAlpha:false});if(!gl)return null;
+  const path=svg.querySelector('path'),length=path.getTotalLength(),view=svg.viewBox.baseVal;
+  const vertex=`attribute vec3 position;attribute vec3 normal;attribute float route;uniform vec2 viewSize;uniform vec3 head;varying vec3 N;varying float t;void main(){vec3 p=route<0.?head+position:position;gl_Position=vec4(p.x/viewSize.x*2.-1.,1.-p.y/viewSize.y*2.,-p.z/160.,1.);N=normal;t=max(0.,route);}`;
+  const fragment=`precision highp float;uniform float reveal;varying vec3 N;varying float t;void main(){if(t>reveal)discard;vec3 n=normalize(N),light=normalize(vec3(-.3,-.6,1.));float diffuse=max(0.,dot(n,light));float spec=pow(max(0.,dot(reflect(-light,n),vec3(0.,0.,1.))),42.);float fresnel=pow(1.-max(0.,n.z),3.);vec3 blue=vec3(.055,.04,.79)*(.5+diffuse*.6);blue+=spec*vec3(.56,.66,1.)+fresnel*vec3(.08,.08,.25);gl_FragColor=vec4(blue,1.);}`;
+  function shader(type,text){const s=gl.createShader(type);gl.shaderSource(s,text);gl.compileShader(s);if(!gl.getShaderParameter(s,gl.COMPILE_STATUS))throw Error(gl.getShaderInfoLog(s));return s;}
+  const program=gl.createProgram();gl.attachShader(program,shader(gl.VERTEX_SHADER,vertex));gl.attachShader(program,shader(gl.FRAGMENT_SHADER,fragment));gl.linkProgram(program);if(!gl.getProgramParameter(program,gl.LINK_STATUS))throw Error(gl.getProgramInfoLog(program));gl.useProgram(program);
+  const positions=[],normals=[],routes=[],steps=320,sides=14,radius=25;
+  const rings=Array.from({length:steps+1},(_,i)=>{const t=i/steps,s=t*length,p=path.getPointAtLength(s),a=path.getPointAtLength(Math.max(0,s-1)),b=path.getPointAtLength(Math.min(length,s+1)),dx=b.x-a.x,dy=b.y-a.y,d=Math.hypot(dx,dy)||1;return{x:p.x,y:p.y,nx:-dy/d,ny:dx/d,t,z:Math.sin(t*Math.PI*4)*25};});
+  function sample(i,j){const r=rings[i],theta=j/sides*Math.PI*2,c=Math.cos(theta),z=Math.sin(theta);return{p:[r.x+r.nx*radius*c,r.y+r.ny*radius*c,r.z+radius*z],n:[r.nx*c,r.ny*c,z],t:r.t};}
+  function tri(a,b,c){for(const v of [a,b,c]){positions.push(...v.p);normals.push(...v.n);routes.push(v.t);}}
+  for(let i=0;i<steps;i++)for(let j=0;j<sides;j++){const a=sample(i,j),b=sample(i+1,j),c=sample(i+1,j+1),d=sample(i,j+1);tri(a,b,c);tri(a,c,d);}
+  const sphere=(lat,lon)=>{const a=lat/10*Math.PI,b=lon/16*Math.PI*2,n=[Math.sin(a)*Math.cos(b),Math.cos(a),Math.sin(a)*Math.sin(b)];return{p:n.map(v=>v*radius),n,t:-1};};
+  for(let lat=0;lat<10;lat++)for(let lon=0;lon<16;lon++){const a=sphere(lat,lon),b=sphere(lat+1,lon),c=sphere(lat+1,lon+1),d=sphere(lat,lon+1);tri(a,b,c);tri(a,c,d);}
+  for(const [name,data,size] of [['position',positions,3],['normal',normals,3],['route',routes,1]]){const buffer=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,buffer);gl.bufferData(gl.ARRAY_BUFFER,new Float32Array(data),gl.STATIC_DRAW);const attr=gl.getAttribLocation(program,name);gl.enableVertexAttribArray(attr);gl.vertexAttribPointer(attr,size,gl.FLOAT,false,0,0);}
+  const reveal=gl.getUniformLocation(program,'reveal'),head=gl.getUniformLocation(program,'head');gl.uniform2f(gl.getUniformLocation(program,'viewSize'),view.width,view.height);gl.enable(gl.DEPTH_TEST);
+  svg.parentElement.insertBefore(canvas,svg);svg.classList.add('ribbon-fallback');
+  return{canvas,section:svg.parentElement,draw(progress){const r=canvas.getBoundingClientRect(),dpr=Math.min(devicePixelRatio,1.5),w=Math.round(r.width*dpr),h=Math.round(r.height*dpr);if(canvas.width!==w||canvas.height!==h){canvas.width=w;canvas.height=h;gl.viewport(0,0,w,h);}gl.clearColor(0,0,0,0);gl.clear(gl.COLOR_BUFFER_BIT|gl.DEPTH_BUFFER_BIT);const p=Math.max(0,Math.min(1,progress)),at=p*steps,a=rings[Math.floor(at)],b=rings[Math.min(steps,Math.floor(at)+1)],f=at-Math.floor(at);gl.uniform3f(head,a.x+(b.x-a.x)*f,a.y+(b.y-a.y)*f,a.z+(b.z-a.z)*f);gl.uniform1f(reveal,p);gl.drawArrays(gl.TRIANGLES,0,positions.length/3);},dispose(){gl.deleteProgram(program);canvas.remove();svg.classList.remove('ribbon-fallback');}};
+}

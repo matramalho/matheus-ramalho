@@ -1,0 +1,21 @@
+{
+  "source": "docs/MAPA_CONTEUDO_INSTITUCIONAL.json",
+  "cases": {
+    "/cases/automacao-propostas/": {
+      "key": "proposal-summary",
+      "content": "Workflow que busca PDFs no Google Drive, evita reprocessamento, extrai dados com apoio de LLM, normaliza campos com JavaScript e registra o resultado no Google Sheets. O fluxo possui caminhos distintos para documentos processados, duplicados e registros com erro, além de fallback determinístico para campos específicos."
+    },
+    "/cases/renovacao-lembretes-calendario/": {
+      "key": "renewal-summary",
+      "content": "Rotina diária que lê a base operacional, recalcula vencimentos, seleciona itens elegíveis e cria ou valida tarefas e eventos no Google Workspace. IDs e estados são registrados de volta na planilha para reduzir duplicidade, preservar rastreabilidade e manter o acompanhamento recorrente."
+    },
+    "/cases/landing-page-raphael-seguros/": {
+      "key": "assisted-summary",
+      "content": "Redesign de uma landing page comercial com foco em clareza da oferta, experiência visual, responsividade, transições entre seções e apresentação profissional dos serviços. Uma versão funcional já foi publicada anteriormente. A versão atual continua em refinamento visual, técnico e editorial."
+    },
+    "/cases/organizador-financeiro/": {
+      "key": "finance-summary",
+      "content": "Aplicação em desenvolvimento para organizar informações financeiras em uma interface centralizada, com módulos voltados a registro, acompanhamento e visualização. A interface e parte dos módulos já foram construídas. Integrações, estrutura de dados e validações ainda estão em evolução."
+    }
+  }
+}

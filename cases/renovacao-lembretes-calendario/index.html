@@ -1,322 +1,137 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Case: Lembretes de Renovação com n8n e Workspace — Matheus Ramalho</title>
-  <meta name="description" content="Estudo de caso detalhado da automação de alertas e tarefas de renovação de contratos usando n8n, Google Tasks e Google Calendar.">
-  
-  <!-- Estilos Gerais e Específicos de Cases -->
-  <link rel="stylesheet" href="../../src/styles/main.css">
-  <link rel="stylesheet" href="../../src/styles/components.css">
-  <link rel="stylesheet" href="../../src/styles/cases.css">
-  <link rel="stylesheet" href="../../src/styles/workflow-canvas.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Automação de renovação, tarefas e calendário | Matheus Ramalho</title>
+<meta name="description" content="Rotina diária que lê a base operacional, recalcula vencimentos, valida o estado dos registros e cria ou confirma tarefas e eventos de acompanhamento.">
+<link rel="stylesheet" href="../../src/styles/main.css">
+<link rel="stylesheet" href="../../src/styles/components.css">
+<link rel="stylesheet" href="../../src/styles/cases.css">
+<link rel="stylesheet" href="../../src/styles/workflow-canvas.css">
 </head>
 <body>
-  <a class="skip-link" href="#main-content">Pular para o conteúdo principal</a>
-
-  <!-- Header / Navigation -->
-  <header class="navbar">
-    <div class="container">
-      <a href="/" class="nav-logo">
-        <span data-icon="n8n" style="color: var(--accent-blue)"></span>
-        Matheus Ramalho
-      </a>
-      <button class="nav-toggle" type="button" aria-label="Abrir menu de navegação" aria-expanded="false" aria-controls="primary-navigation"><span data-icon="menu"></span></button>
-      <nav class="nav-links" id="primary-navigation" aria-label="Navegação principal">
-        <a href="/#cases" class="nav-link">Cases</a>
-        <a href="/#capacidades" class="nav-link">Capacidades</a>
-        <a href="/#processo" class="nav-link">Como Trabalho</a>
-        <a href="/#seguranca" class="nav-link">Segurança & LGPD</a>
-        <a href="/#sobre" class="nav-link">Sobre</a>
-      </nav>
-    </div>
-  </header>
-
-  <main id="main-content">
-    <!-- Case Header -->
-    <header class="case-page-header">
-      <div class="container">
-        <a href="/" class="case-back-link">
-          <span data-icon="arrow-right" style="transform: rotate(180deg);"></span>
-          Voltar para a Home
-        </a>
-        <div class="case-header-content">
-          <div style="display: flex; gap: 8px;">
-            <span class="badge badge-blue">n8n</span>
-            <span class="badge badge-green">Google Workspace</span>
-            <span class="badge badge-amber">Controle Lógico</span>
-          </div>
-          <h1 class="case-title">Esteira de Acompanhamento e Renovações de Apólices</h1>
-          <p class="case-subtitle">
-            Esteira inteligente que varre uma planilha de apólices, calcula dinamicamente datas de vencimento, cria alertas automáticos no Google Tasks e Google Calendar, gravando as evidências de execução na base.
-          </p>
-        </div>
-      </div>
-    </header>
-
-    <section class="workflow-poc-section" aria-labelledby="workflow-poc-title">
-      <div class="container">
-        <div class="workflow-canvas-app" data-workflow-canvas="renewalReminders">
-          <h2 id="workflow-poc-title">Arquitetura interativa do workflow</h2>
-          <p>Carregando representação sanitizada…</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Case Body -->
-    <section class="container">
-      <div class="case-content-layout">
-        <!-- Coluna Principal (Narrativa) -->
-        <article class="case-main-content">
-          
-          <!-- Problema -->
-          <div class="case-section">
-            <h2 class="case-section-title">O Problema Operacional</h2>
-            <p>
-              Manter o controle sobre contratos e apólices a vencer é um desafio crítico em operações de corretagem. A perda de prazos de renovação resulta diretamente em perda de receita e cobertura para o cliente. A operação manual desse controle gerava:
-            </p>
-            <div class="case-list">
-              <div class="case-list-item">
-                <span data-icon="alert-triangle" class="case-list-item-icon"></span>
-                <p><strong>Esquecimentos frequentes:</strong> Confiar na verificação manual diária da planilha resultava em apólices expirando sem aviso prévio.</p>
-              </div>
-              <div class="case-list-item">
-                <span data-icon="alert-triangle" class="case-list-item-icon"></span>
-                <p><strong>Retrabalho em agendamento:</strong> Preencher manualmente o calendário do corretor e criar alertas de tarefas gastava tempo valioso de vendas.</p>
-              </div>
-              <div class="case-list-item">
-                <span data-icon="alert-triangle" class="case-list-item-icon"></span>
-                <p><strong>Falta de Rastreabilidade:</strong> Não havia registro de quais contratos já possuíam tarefas ou eventos criados no calendário, gerando alertas duplicados e confusão na equipe.</p>
-              </div>
-            </div>
-          </div>
-
-          <!-- Solução -->
-          <div class="case-section">
-            <h2 class="case-section-title">A Solução Desenvolvida</h2>
-            <p>
-              Foi criada uma esteira automatizada programada de verificação diária. O fluxo lê os dados, calcula os prazos operacionais, agenda as tarefas e confirma o status diretamente na base de controle.
-            </p>
-            <p>
-              Passo a passo lógico da esteira:
-            </p>
-            <ol class="case-list" style="list-style-type: decimal; padding-left: 20px;">
-              <li style="color: var(--text-secondary); margin-bottom: 12px;">
-                <strong>Gatilho Cron:</strong> O workflow é disparado automaticamente todos os dias às 08:00 (Cron Node).
-              </li>
-              <li style="color: var(--text-secondary); margin-bottom: 12px;">
-                <strong>Leitura da Base:</strong> Lê a planilha do Google Sheets que contém a base de apólices ativas.
-              </li>
-              <li style="color: var(--text-secondary); margin-bottom: 12px;">
-                <strong>Cálculo Dinâmico (JS):</strong> Um nó de código JavaScript processa a data de término de cada apólice, calcula a diferença em dias até o vencimento e classifica os registros elegíveis (ex: exatamente 30 dias para vencer).
-              </li>
-              <li style="color: var(--text-secondary); margin-bottom: 12px;">
-                <strong>Google Tasks Sync:</strong> Cria uma tarefa no painel de controle operacional do corretor (Google Tasks), detalhando o nome do cliente fictício e os valores da proposta, com data de vencimento correspondente.
-              </li>
-              <li style="color: var(--text-secondary); margin-bottom: 12px;">
-                <strong>Google Calendar Sync:</strong> Agenda um evento de lembrete no calendário compartilhado da corretora (Google Calendar) na data correspondente, facilitando o planejamento de reuniões ou contatos telefônicos de renovação.
-              </li>
-              <li style="color: var(--text-secondary); margin-bottom: 12px;">
-                <strong>Wait Nodes (Resiliência):</strong> Introdução de nós de espera (Wait) para respeitar limites de requisições por minuto (rate limits) impostos pelas APIs do Google Workspace, evitando bloqueios na esteira.
-              </li>
-              <li style="color: var(--text-secondary); margin-bottom: 12px;">
-                <strong>Gravação de Logs:</strong> O n8n atualiza a linha correspondente no Google Sheets, marcando o status como `Lembrete Criado` e salvando o ID da Task e do Evento criados para futura referência ou cancelamento automático.
-              </li>
-            </ol>
-          </div>
-
-          <!-- Arquitetura -->
-          <div class="case-section">
-            <h2 class="case-section-title">Arquitetura do Workflow</h2>
-            <p>Abaixo está o mapeamento dos nós lógicos integrados:</p>
-            
-            <div class="workflow-diagram-container">
-              <div class="workflow-node-grid">
-                <div class="workflow-node">
-                  <span data-icon="calendar" style="color: var(--accent-blue)"></span>
-                  Cron Trigger (Daily 08:00)
-                </div>
-                <span class="workflow-connector" data-icon="arrow-right"></span>
-                <div class="workflow-node">
-                  <span data-icon="sheets" style="color: var(--accent-green)"></span>
-                  Read Apólices Sheets
-                </div>
-                <span class="workflow-connector" data-icon="arrow-right"></span>
-                <div class="workflow-node">
-                  <span data-icon="code" style="color: var(--accent-amber)"></span>
-                  Cálculo Expiração JS
-                </div>
-                <span class="workflow-connector" data-icon="arrow-right"></span>
-                <div class="workflow-node">
-                  <span data-icon="check-square" style="color: var(--accent-green)"></span>
-                  Create Google Task
-                </div>
-                <span class="workflow-connector" data-icon="arrow-right"></span>
-                <div class="workflow-node">
-                  <span data-icon="calendar" style="color: var(--accent-purple)"></span>
-                  Create Calendar Event
-                </div>
-                <span class="workflow-connector" data-icon="arrow-right"></span>
-                <div class="workflow-node">
-                  <span data-icon="sheets" style="color: var(--accent-green)"></span>
-                  Write Status Log
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Evidências -->
-          <div class="case-section">
-            <h2 class="case-section-title">Evidências e Demonstração</h2>
-            <p>Abaixo estão os registros do workflow em funcionamento. Os caminhos de mídia estão estruturados e aguardam a inserção dos assets finais.</p>
-            
-            <!-- Galeria de Evidências -->
-            <div class="evidence-gallery">
-              
-              <!-- Card 1: Print do Workflow -->
-              <div class="evidence-card">
-                <div class="evidence-card-media">
-                  <div class="media-placeholder" style="height: 200px; padding: 20px;">
-                    <span data-icon="calendar" style="color: var(--accent-blue);"></span>
-                    <p style="font-size: 0.8rem; margin-top: 8px; color: var(--text-muted);">workflow_main.png</p>
-                  </div>
-                  <!-- Substituir pelo asset real: <img src="../../assets/cases/renovacao-lembretes-calendario/screenshots/workflow_main.png" alt="Workflow Canvas n8n"> -->
-                </div>
-                <div class="evidence-card-body">
-                  <h3 class="evidence-card-title">Estrutura do Canvas n8n</h3>
-                  <p class="evidence-card-description">Mapeamento completo dos nós lógicos, loops de processamento e timers de espera (wait).</p>
-                </div>
-                <div class="evidence-card-footer">
-                  <span class="badge-sanitizado">Conformidade LGPD</span>
-                </div>
-              </div>
-
-              <!-- Card 2: Google Tasks / Calendar -->
-              <div class="evidence-card">
-                <div class="evidence-card-media">
-                  <div class="media-placeholder" style="height: 200px; padding: 20px;">
-                    <span data-icon="check-square" style="color: var(--accent-green);"></span>
-                    <p style="font-size: 0.8rem; margin-top: 8px; color: var(--text-muted);">tasks_calendar.png</p>
-                  </div>
-                  <!-- Substituir pelo asset real: <img src="../../assets/cases/renovacao-lembretes-calendario/screenshots/tasks_calendar.png" alt="Tarefas e Calendário Google Workspace"> -->
-                </div>
-                <div class="evidence-card-body">
-                  <h3 class="evidence-card-title">Painel Workspace</h3>
-                  <p class="evidence-card-description">Demonstração das tarefas operacionais e eventos de calendário gerados automaticamente.</p>
-                </div>
-                <div class="evidence-card-footer">
-                  <span class="badge-ficticio">Dados Fictícios</span>
-                </div>
-              </div>
-
-              <!-- Card 3: Vídeo de Execução -->
-              <div class="evidence-card" style="grid-column: span 2;">
-                <div class="evidence-card-media" style="min-height: 250px;">
-                  <div class="media-placeholder" style="height: 250px;">
-                    <div class="media-placeholder-icon">
-                      <span data-icon="terminal"></span>
-                    </div>
-                    <p style="font-size: 0.85rem; color: var(--text-muted); max-width: 300px; margin-top: 10px;">
-                      demostracao.mp4<br>
-                      Arraste o vídeo demonstrativo revisado para a subpasta correspondente.
-                    </p>
-                  </div>
-                  <!-- Substituir pelo asset real: <video controls src="../../assets/cases/renovacao-lembretes-calendario/videos/demostracao.mp4"></video> -->
-                </div>
-                <div class="evidence-card-body">
-                  <h3 class="evidence-card-title">Sincronização em Tempo Real</h3>
-                  <p class="evidence-card-description">Vídeo curto demonstrando a verificação diária automática, o cálculo de expiração de contratos e a criação simultânea de lembretes.</p>
-                </div>
-                <div class="evidence-card-footer">
-                  <span class="badge-ficticio">Ambiente de Teste</span>
-                  <span class="badge-sanitizado">Sem Dados Reais</span>
-                </div>
-              </div>
-
-            </div>
-          </div>
-
-          <!-- Segurança e LGPD -->
-          <div class="case-section">
-            <h2 class="case-section-title">Políticas de Segurança Aplicadas</h2>
-            <div class="case-privacy-notice">
-              <div class="case-privacy-icon">
-                <span data-icon="shield-check" style="width: 24px; height: 24px;"></span>
-              </div>
-              <div class="case-privacy-text">
-                <strong>Nota de Segurança e LGPD:</strong> Demonstrações realizadas em ambiente de teste com dados fictícios. Prints, vídeos e documentos devem ser revisados e mascarados antes de publicação pública.
-              </div>
-            </div>
-          </div>
-
-        </article>
-
-        <!-- Sidebar Ficha Técnica -->
-        <aside class="case-sidebar">
-          <div class="sidebar-widget">
-            <h3 class="widget-title">Ficha Técnica</h3>
-            <div class="widget-info-list">
-              <div class="widget-info-item">
-                <span class="widget-info-label">Ferramenta Base</span>
-                <span class="widget-info-value">n8n Orquestrador</span>
-              </div>
-              <div class="widget-info-item">
-                <span class="widget-info-label">Ferramentas Sincronizadas</span>
-                <span class="widget-info-value">Google Tasks, Google Calendar</span>
-              </div>
-              <div class="widget-info-item">
-                <span class="widget-info-label">Base de Dados</span>
-                <span class="widget-info-value">Google Sheets (Leitura/Escrita)</span>
-              </div>
-              <div class="widget-info-item">
-                <span class="widget-info-label">Controle de Fluxo</span>
-                <span class="widget-info-value">Code Node (JS), Wait Node</span>
-              </div>
-              <div class="widget-info-item">
-                <span class="widget-info-label">Complexidade</span>
-                <span class="widget-info-value" style="color: var(--accent-amber);">Média</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="sidebar-widget" style="background: rgba(255,255,255,0.01);">
-            <h3 class="widget-title">Resultados Observados</h3>
-            <div class="widget-info-list">
-              <div class="widget-info-item">
-                <span class="widget-info-label">Apoio Operacional</span>
-                <span class="widget-info-value">Apoio à prevenção de esquecimentos</span>
-              </div>
-              <div class="widget-info-item">
-                <span class="widget-info-label">Eficiência</span>
-                <span class="widget-info-value">Redução relevante de trabalho manual</span>
-              </div>
-              <div class="widget-info-item">
-                <span class="widget-info-label">Sincronização</span>
-                <span class="widget-info-value">Processo mais rastreável e padronizado</span>
-              </div>
-            </div>
-          </div>
-        </aside>
-
-      </div>
-    </section>
-  </main>
-
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container">
-      <span class="footer-logo">Matheus Ramalho &copy; <span id="current-year"></span></span>
-      <div class="footer-socials">
-        <a href="https://www.linkedin.com/in/matheus-ramalho-a24b0371" class="footer-icon-link" aria-label="LinkedIn de Matheus Ramalho (abre em nova aba)" target="_blank" rel="noopener noreferrer" data-icon="linkedin"></a>
-        <a href="mailto:matheushm97@gmail.com" class="footer-icon-link" aria-label="Enviar e-mail para Matheus Ramalho" data-icon="mail"></a>
-        <a href="https://github.com/matramalho" class="footer-icon-link" aria-label="GitHub de Matheus Ramalho (abre em nova aba)" target="_blank" rel="noopener noreferrer" data-icon="github"></a>
-      </div>
-    </div>
-  </footer>
-
-  <!-- Entry Script -->
-  <script type="module" src="../../src/main.js"></script>
-  <script type="module" src="../../src/components/workflow-canvas.js"></script>
+<a class="skip-link" href="#main-content">Pular para o conteúdo principal</a>
+<header class="navbar">
+<div class="container">
+<a href="/" class="nav-logo">
+<span data-icon="n8n" style="color: var(--accent-blue)">
+</span>Matheus Ramalho</a>
+<button class="nav-toggle" type="button" aria-label="Abrir menu de navegação" aria-expanded="false" aria-controls="primary-navigation">
+<span data-icon="menu">
+</span>
+</button>
+<nav class="nav-links" id="primary-navigation" aria-label="Navegação principal">
+<a href="/#cases" class="nav-link">Projetos</a>
+<a href="/#capacidades" class="nav-link">Capacidades</a>
+<a href="/#como-uso-ia" class="nav-link">Como uso IA</a>
+<a href="/#processo" class="nav-link">Processo</a>
+<a href="/#seguranca" class="nav-link">Segurança</a>
+<a href="/#sobre" class="nav-link">Sobre</a>
+</nav>
+</div>
+</header>
+<main id="main-content">
+<header class="case-page-header">
+<div class="container">
+<a href="/" class="case-back-link">
+<span data-icon="arrow-right" style="transform: rotate(180deg);">
+</span>Voltar para a Home</a>
+<div class="case-header-content">
+<div style="display:flex;gap:8px;">
+<span class="badge badge-blue">n8n</span>
+<span class="badge badge-green">Google Tasks</span>
+<span class="badge badge-purple">Google Calendar</span>
+</div>
+<span class="badge badge-sanitizado">Implementado e validado</span>
+<h1 class="case-title">Automação de renovação, tarefas e calendário</h1>
+<p class="case-subtitle">Rotina diária que lê a base operacional, recalcula vencimentos, valida o estado dos registros e cria ou confirma tarefas e eventos de acompanhamento.</p>
+</div>
+</div>
+</header>
+<section class="workflow-poc-section" aria-labelledby="workflow-poc-title">
+<div class="container">
+<div class="workflow-canvas-app" data-workflow-canvas="renewalReminders">
+<h2 id="workflow-poc-title">Arquitetura interativa do workflow</h2>
+<p>Carregando representação sanitizada…</p>
+</div>
+</div>
+</section>
+<section class="container">
+<div class="case-content-layout">
+<article class="case-main-content">
+<section class="case-section">
+<h2 class="case-section-title">Contexto</h2>
+<p>O acompanhamento de vencimentos depende de consulta frequente da base, criação de tarefas e atualização do calendário. Sem controle de estado, o processo pode gerar esquecimento, repetição e perda de rastreabilidade.</p>
+</section>
+<section class="case-section">
+<h2 class="case-section-title">Solução</h2>
+<ol class="case-list" style="list-style-type: decimal; padding-left:20px;">
+<li style="color:var(--text-secondary);margin-bottom:12px;">Um gatilho diário executa o fluxo às 08:00.</li>
+<li style="color:var(--text-secondary);margin-bottom:12px;">A base de apólices é lida no Google Sheets.</li>
+<li style="color:var(--text-secondary);margin-bottom:12px;">JavaScript converte datas, recalcula os dias até o vencimento e seleciona registros ativos.</li>
+<li style="color:var(--text-secondary);margin-bottom:12px;">O fluxo ignora cancelamentos, registros concluídos, itens sem identificador estável e dados inelegíveis.</li>
+<li style="color:var(--text-secondary);margin-bottom:12px;">A execução é limitada a até 20 registros por ciclo.</li>
+<li style="color:var(--text-secondary);margin-bottom:12px;">Os itens são processados individualmente.</li>
+<li style="color:var(--text-secondary);margin-bottom:12px;">O fluxo verifica se o registro já foi marcado como concluído.</li>
+<li style="color:var(--text-secondary);margin-bottom:12px;">Caso exista um ID de Google Task, a tarefa é consultada e validada.</li>
+<li style="color:var(--text-secondary);margin-bottom:12px;">Se a tarefa não existir ou não for válida, uma nova tarefa é criada.</li>
+<li style="color:var(--text-secondary);margin-bottom:12px;">O mesmo processo é aplicado ao evento do Google Calendar.</li>
+<li style="color:var(--text-secondary);margin-bottom:12px;">Eventos existentes são consultados e validados.</li>
+<li style="color:var(--text-secondary);margin-bottom:12px;">O fluxo verifica a presença dos lembretes de 15 dias, 7 dias e 1 dia.</li>
+<li style="color:var(--text-secondary);margin-bottom:12px;">Lembretes ausentes são atualizados.</li>
+<li style="color:var(--text-secondary);margin-bottom:12px;">Pausas de 3 segundos protegem as integrações contra excesso de chamadas.</li>
+<li style="color:var(--text-secondary);margin-bottom:12px;">IDs de tarefa e evento, status e data de atualização são gravados na planilha.</li>
+<li style="color:var(--text-secondary);margin-bottom:12px;">O fluxo retorna ao loop até concluir o lote.</li>
+</ol>
+</section>
+<section class="case-section">
+<h2 class="case-section-title">Resultado observável</h2>
+<p>O fluxo cria ou valida tarefas e eventos, aplica lembretes padronizados e registra o resultado na base. Isso reduz a dependência de conferência manual e melhora a previsibilidade do acompanhamento de renovação.</p>
+</section>
+<section class="case-section">
+<h2 class="case-section-title">Sobre a visualização</h2>
+<p>A arquitetura interativa apresenta uma visão simplificada do processo. No workflow, tarefas e eventos existentes são validados antes da continuidade, e as pausas são preventivas entre chamadas.</p>
+</section>
+<section class="evidence-gallery" hidden aria-hidden="true">
+</section>
+</article>
+<aside class="case-sidebar">
+<div class="sidebar-widget">
+<h3 class="widget-title">Ficha Técnica</h3>
+<div class="widget-info-list">
+<div class="widget-info-item">
+<span class="widget-info-label">Stack</span>
+<span class="widget-info-value">n8n · Google Sheets · Google Tasks · Google Calendar · JavaScript</span>
+</div>
+<div class="widget-info-item">
+<span class="widget-info-label">Status</span>
+<span class="widget-info-value">Implementado e validado</span>
+</div>
+</div>
+</div>
+</aside>
+</div>
+</section>
+</main>
+<footer class="footer">
+<div class="container">
+<span class="footer-logo">Matheus Ramalho &copy; <span id="current-year">
+</span>
+</span>
+<div class="footer-socials">
+<a href="https://www.linkedin.com/in/matheus-ramalho-a24b0371" class="footer-icon-link" aria-label="LinkedIn de Matheus Ramalho (abre em nova aba)" target="_blank" rel="noopener noreferrer" data-icon="linkedin">
+</a>
+<a href="mailto:matheushm97@gmail.com" class="footer-icon-link" aria-label="Enviar e-mail para Matheus Ramalho" data-icon="mail">
+</a>
+<a href="https://github.com/matramalho" class="footer-icon-link" aria-label="GitHub de Matheus Ramalho (abre em nova aba)" target="_blank" rel="noopener noreferrer" data-icon="github">
+</a>
+</div>
+</div>
+</footer>
+<script type="module" src="../../src/main.js">
+</script>
+<script type="module" src="../../src/components/workflow-canvas.js">
+</script>
 </body>
 </html>

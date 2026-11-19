@@ -148,6 +148,30 @@
   margin-right: auto;
 }
 
+.surface-transition {
+  height: clamp(90px, 13vw, 180px);
+  overflow: hidden;
+  background: #0b1020;
+  pointer-events: none;
+}
+
+.surface-transition svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.surface-transition-fill {
+  fill: #111827;
+}
+
+.surface-transition-edge {
+  fill: none;
+  stroke: rgba(100, 186, 209, 0.68);
+  stroke-width: 1.5;
+  vector-effect: non-scaling-stroke;
+}
+
 #cases {
   position: relative;
   overflow: hidden;
@@ -365,6 +389,44 @@
   font-size: 0.95rem;
   color: var(--text-secondary);
   flex-grow: 1;
+}
+
+/* Trajetória: uma linha editorial contínua, sem exigir animação. */
+.journey-content {
+  max-width: 960px;
+}
+
+.journey-content h2 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  margin-bottom: 32px;
+}
+
+.journey-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--border);
+}
+
+.journey-list li {
+  display: grid;
+  grid-template-columns: 6rem minmax(0, 1fr);
+  gap: 24px;
+  padding: 22px 0;
+  border-bottom: 1px solid var(--border-light);
+  color: var(--text-secondary);
+}
+
+.journey-list strong {
+  font-family: var(--font-code);
+  color: var(--accent-blue);
+}
+
+@media (max-width: 480px) {
+  .journey-list li {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
 }
 
 /* Process Timeline */

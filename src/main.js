@@ -30,10 +30,14 @@ function setupMobileMenu() {
   const links = document.querySelector('.nav-links');
   
   if (toggle && links) {
+    const isEnglish = document.documentElement.lang.toLowerCase().startsWith('en');
+    const menuLabels = isEnglish
+      ? { open: 'Open navigation menu', close: 'Close navigation menu' }
+      : { open: 'Abrir menu de navegação', close: 'Fechar menu de navegação' };
     const closeMenu = () => {
       links.classList.remove('active');
       toggle.setAttribute('aria-expanded', 'false');
-      toggle.setAttribute('aria-label', 'Abrir menu de navegação');
+      toggle.setAttribute('aria-label', menuLabels.open);
       renderMenuIcon(toggle, false);
     };
 
@@ -41,18 +45,11 @@ function setupMobileMenu() {
       links.classList.toggle('active');
       const isExpanded = links.classList.contains('active');
       toggle.setAttribute('aria-expanded', isExpanded);
-      toggle.setAttribute('aria-label', isExpanded ? 'Fechar menu de navegação' : 'Abrir menu de navegação');
+      toggle.setAttribute('aria-label', isExpanded ? menuLabels.close : menuLabels.open);
       renderMenuIcon(toggle, isExpanded);
     };
 
     toggle.addEventListener('click', toggleMenu);
-    toggle.addEventListener('keydown', (event) => {
-      if (event.key === 'Enter' || event.key === ' ') {
-        event.preventDefault();
-        toggleMenu();
-      }
-    });
-
     links.addEventListener('click', (event) => {
       if (event.target.closest('a')) closeMenu();
     });
@@ -78,17 +75,13 @@ function renderMenuIcon(toggle, isExpanded) {
 
 // Logs para o terminal interativo
 const terminalLogs = [
-  { text: 'n8n start --workflow-id="propostas-ia-ficticio"', type: 'command' },
-  { text: '[SYSTEM] Inicializando conexões seguras...', type: 'info' },
-  { text: '[DRIVE] Monitorando pasta: /Entrada_Propostas_Mock', type: 'info' },
-  { text: '[DRIVE] Novo arquivo detectado: "proposta_premium_ficticia.pdf"', type: 'success' },
-  { text: '[NODE] Executando: Extração de Conteúdo PDF...', type: 'info' },
-  { text: '[NODE] Executando: OpenAI Chat Model (Extração)...', type: 'info' },
-  { text: '[DATA] Dados Extraídos (Sanitizados): \n{\n  "segurado": "Carlos Drummond",\n  "placa": "MOCK-9999",\n  "vigencia": "12/2026",\n  "valor": "R$ 3.450,00"\n}', type: 'success' },
-  { text: '[NODE] Executando: Deduplicação (Validação Sheets)...', type: 'info' },
-  { text: '[SHEETS] Gravando dados na Planilha de Controle...', type: 'info' },
-  { text: '[SYSTEM] Arquivo movido para: /Processados_Ficticios', type: 'success' },
-  { text: '[SUCCESS] Execução concluída com sucesso. Sem falhas.', type: 'status' }
+  { text: 'workflow start --document-processing', type: 'command' },
+  { text: '[ENTRADA] Documento recebido para processamento.', type: 'info' },
+  { text: '[VALIDAÇÃO] Verificando duplicidade e campos mínimos.', type: 'info' },
+  { text: '[PROCESSAMENTO] Extração estruturada em andamento.', type: 'success' },
+  { text: '[CONTEXTO] Conteúdo organizado para o modelo de linguagem.', type: 'info' },
+  { text: '[DADOS] Estrutura JSON predefinida recebida para normalização.', type: 'success' },
+  { text: '[ESTADO] Resultado registrado com tratamento de exceções.', type: 'status' }
 ];
 
 function initMockTerminal() {

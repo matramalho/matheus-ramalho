@@ -1,263 +1,101 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Case: Landing Page Raphael Seguros — Matheus Ramalho</title>
-  <meta name="description" content="Estudo de caso sobre a auditoria, refinamento visual e copy da landing page institucional Raphael Seguros. Case em preparação.">
-  
-  <!-- Estilos Gerais e Específicos de Cases -->
-  <link rel="stylesheet" href="../../src/styles/main.css">
-  <link rel="stylesheet" href="../../src/styles/components.css">
-  <link rel="stylesheet" href="../../src/styles/cases.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Landing page de seguros com desenvolvimento assistido por IA | Matheus Ramalho</title>
+<meta name="description" content="Projeto de redesign e desenvolvimento de uma landing page comercial voltada à apresentação de serviços, confiança e geração de contato.">
+<link rel="stylesheet" href="../../src/styles/main.css">
+<link rel="stylesheet" href="../../src/styles/components.css">
+<link rel="stylesheet" href="../../src/styles/cases.css">
 </head>
 <body>
-  <a class="skip-link" href="#main-content">Pular para o conteúdo principal</a>
-
-  <!-- Header / Navigation -->
-  <header class="navbar">
-    <div class="container">
-      <a href="/" class="nav-logo">
-        <span data-icon="n8n" style="color: var(--accent-blue)"></span>
-        Matheus Ramalho
-      </a>
-      <button class="nav-toggle" type="button" aria-label="Abrir menu de navegação" aria-expanded="false" aria-controls="primary-navigation"><span data-icon="menu"></span></button>
-      <nav class="nav-links" id="primary-navigation" aria-label="Navegação principal">
-        <a href="/#cases" class="nav-link">Projetos</a>
-        <a href="/#capacidades" class="nav-link">Capacidades</a>
-        <a href="/#como-uso-ia" class="nav-link">Uso de IA</a>
-        <a href="/#processo" class="nav-link">Processo</a>
-        <a href="/#seguranca" class="nav-link">Segurança & LGPD</a>
-        <a href="/#sobre" class="nav-link">Sobre</a>
-      </nav>
-    </div>
-  </header>
-
-  <main id="main-content">
-    <!-- Case Header -->
-    <header class="case-page-header">
-      <div class="container">
-        <a href="/" class="case-back-link">
-          <span data-icon="arrow-right" style="transform: rotate(180deg);"></span>
-          Voltar para a Home
-        </a>
-        <div class="case-header-content">
-          <div style="display: flex; gap: 8px; align-items: center;">
-            <span class="badge badge-blue">HTML5 & CSS3</span>
-            <span class="badge badge-purple">Copywriting</span>
-            <span class="badge badge-green">UI/UX</span>
-            <span class="badge-ficticio" style="border-color: rgba(56, 189, 248, 0.4); color: var(--accent-blue); background: rgba(56, 189, 248, 0.05);">Em Preparação</span>
-          </div>
-          <h1 class="case-title">Landing Page Institucional — Raphael Seguros</h1>
-          <p class="case-subtitle">
-            Projeto institucional em preparação, com foco em estrutura, copy, apresentação visual e clareza comercial.
-          </p>
-        </div>
-      </div>
-    </header>
-
-    <!-- Case Body -->
-    <section class="container">
-      <div class="case-content-layout">
-        <!-- Coluna Principal (Narrativa) -->
-        <article class="case-main-content">
-          
-          <!-- Contexto de Status -->
-          <div class="case-section" style="border: 1px solid rgba(56, 189, 248, 0.2); background: rgba(56, 189, 248, 0.02); padding: 24px; border-radius: var(--radius-md);">
-            <h3 style="font-size: 1.15rem; color: var(--accent-blue); margin-bottom: 8px; display: flex; align-items: center; gap: 8px;">
-              <span data-icon="alert-circle"></span>
-              Status: Estudo de Caso em Preparação
-            </h3>
-            <p style="font-size: 0.95rem; line-height: 1.6; color: var(--text-secondary); margin: 0;">
-              Este estudo de caso está em fase de estruturação e triagem de evidências visuais sanitizadas. O conteúdo técnico abaixo descreve os pilares metodológicos e o planejamento de design e copy aplicados, aguardando aprovação de mídia para a inclusão de prints e vídeos.
-            </p>
-          </div>
-
-          <!-- Problema -->
-          <div class="case-section">
-            <h2 class="case-section-title">O Desafio</h2>
-            <p>
-              Páginas institucionais de seguros frequentemente enfrentam a barreira da complexidade textual e visual. Templates prontos e genéricos falham em transmitir a credibilidade necessária para a conversão de leads premium.
-            </p>
-            <div class="case-list">
-              <div class="case-list-item">
-                <span data-icon="alert-triangle" class="case-list-item-icon"></span>
-                <p><strong>Copy Excessivamente Técnico:</strong> Jargões do mercado de seguros dificultam o entendimento do público geral sobre o que de fato está coberto e quais os diferenciais da corretora.</p>
-              </div>
-              <div class="case-list-item">
-                <span data-icon="alert-triangle" class="case-list-item-icon"></span>
-                <p><strong>Falta de Autoridade Visual:</strong> Cores e layouts genéricos comprometem a percepção de valor do serviço, diminuindo a taxa de contatos via site.</p>
-              </div>
-              <div class="case-list-item">
-                <span data-icon="alert-triangle" class="case-list-item-icon"></span>
-                <p><strong>Desorganização de Seções:</strong> Benefícios importantes dispersos, dificultando a leitura rápida e a identificação do call to action (CTA).</p>
-              </div>
-            </div>
-          </div>
-
-          <!-- Solução -->
-          <div class="case-section">
-            <h2 class="case-section-title">Pilares do Desenvolvimento</h2>
-            <p>
-              O refinamento da landing page institucional foca na transição de um modelo genérico para um layout estruturado, com copy focado em benefícios comerciais claros e navegação fluida:
-            </p>
-            <ol class="case-list" style="list-style-type: decimal; padding-left: 20px;">
-              <li style="color: var(--text-secondary); margin-bottom: 12px;">
-                <strong>Auditoria Estrutural de Landing Page:</strong> Análise da hierarquia semântica das tags HTML, velocidade de carregamento de imagens locais e adaptabilidade para dispositivos móveis (responsividade).
-              </li>
-              <li style="color: var(--text-secondary); margin-bottom: 12px;">
-                <strong>Refinamento de Design Visual (Design Assistido):</strong> Aplicação de paleta de cores equilibrada, contraste nítido e micro-animações nas interações sob estrita validação e controle manual do operador.
-              </li>
-              <li style="color: var(--text-secondary); margin-bottom: 12px;">
-                <strong>Copywriting Assistido com Revisão Manual:</strong> Adaptação da copy comercial utilizando copilotos de IA para geração de ideias e redação inicial, seguido de rigorosa validação humana e revisão manual para adequação ao tom da marca.
-              </li>
-              <li style="color: var(--text-secondary); margin-bottom: 12px;">
-                <strong>Organização de Seções:</strong> Reordenação lógica estruturada (Hero → Coberturas → Benefícios → Depoimentos → Chamada para Ação/Contato).
-              </li>
-            </ol>
-          </div>
-
-          <!-- Arquitetura Semântica -->
-          <div class="case-section">
-            <h2 class="case-section-title">Estrutura Semântica Proposta</h2>
-            <p>Representação da estrutura de blocos e seções semânticas da landing page:</p>
-            
-            <div class="workflow-diagram-container">
-              <div class="workflow-node-grid">
-                <div class="workflow-node">
-                  &lt;header&gt; Navbar
-                </div>
-                <span class="workflow-connector" data-icon="arrow-right"></span>
-                <div class="workflow-node" style="border-color: var(--accent-blue);">
-                  &lt;section&gt; Hero (Proposta de Valor)
-                </div>
-                <span class="workflow-connector" data-icon="arrow-right"></span>
-                <div class="workflow-node">
-                  &lt;section&gt; Coberturas (Grade de Serviços)
-                </div>
-                <span class="workflow-connector" data-icon="arrow-right"></span>
-                <div class="workflow-node">
-                  &lt;section&gt; Benefícios (Diferenciais)
-                </div>
-                <span class="workflow-connector" data-icon="arrow-right"></span>
-                <div class="workflow-node" style="border-color: var(--accent-green);">
-                  &lt;section&gt; Lead Capture (CTA Formulário)
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Evidências Pendentes -->
-          <div class="case-section">
-            <h2 class="case-section-title">Evidências e Layouts</h2>
-            <p>Visualizações e prints em processo de triagem visual de segurança antes da inserção pública.</p>
-            
-            <div class="evidence-gallery">
-              
-              <!-- Card Placeholder 1 -->
-              <div class="evidence-card" style="grid-column: span 2;">
-                <div class="evidence-card-media" style="min-height: 250px;">
-                  <div class="media-placeholder" style="height: 250px;">
-                    <div class="media-placeholder-icon">
-                      <span data-icon="image"></span>
-                    </div>
-                    <p style="font-size: 0.85rem; color: var(--text-muted); max-width: 380px; margin-top: 10px;">
-                      screenshots_landing_page.png<br>
-                      Aguardando triagem de conformidade de imagem para exibição do layout responsivo sem exposição de dados pessoais.
-                    </p>
-                  </div>
-                </div>
-                <div class="evidence-card-body">
-                  <h3 class="evidence-card-title">Auditoria e Demonstração de Layout</h3>
-                  <p class="evidence-card-description">Mapeamento visual das seções, contraste de cores e legibilidade de fontes em telas desktop e mobile.</p>
-                </div>
-                <div class="evidence-card-footer">
-                  <span class="badge-ficticio" style="border-color: rgba(56, 189, 248, 0.4); color: var(--accent-blue); background: rgba(56, 189, 248, 0.05);">Em Preparação</span>
-                </div>
-              </div>
-
-            </div>
-          </div>
-
-          <!-- Segurança e LGPD -->
-          <div class="case-section">
-            <h2 class="case-section-title">Políticas de Segurança e Governança</h2>
-            <div class="case-privacy-notice">
-              <div class="case-privacy-icon">
-                <span data-icon="shield-check" style="width: 24px; height: 24px;"></span>
-              </div>
-              <div class="case-privacy-text">
-                <strong>Nota de Privacidade:</strong> Este portfólio não expõe links de administração privados, chaves de API de capturas de formulário, e-mails de contato do cliente, telefones reais ou qualquer informação comercial não autorizada ou confidencial.
-              </div>
-            </div>
-          </div>
-
-        </article>
-
-        <!-- Sidebar Ficha Técnica -->
-        <aside class="case-sidebar">
-          <div class="sidebar-widget">
-            <h3 class="widget-title">Ficha Técnica</h3>
-            <div class="widget-info-list">
-              <div class="widget-info-item">
-                <span class="widget-info-label">Ferramenta Base</span>
-                <span class="widget-info-value">Vite / HTML5 & CSS3</span>
-              </div>
-              <div class="widget-info-item">
-                <span class="widget-info-label">Hospedagem Futura</span>
-                <span class="widget-info-value">Ambiente Web Público Seguro</span>
-              </div>
-              <div class="widget-info-item">
-                <span class="widget-info-label">Integrações</span>
-                <span class="widget-info-value">Formulário Estático Sanitizado</span>
-              </div>
-              <div class="widget-info-item">
-                <span class="widget-info-label">Lógica Interna</span>
-                <span class="widget-info-value">Vanilla JS (Apenas Layout)</span>
-              </div>
-              <div class="widget-info-item">
-                <span class="widget-info-label">Complexidade</span>
-                <span class="widget-info-value" style="color: var(--accent-amber);">Média</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="sidebar-widget" style="background: rgba(255,255,255,0.01);">
-            <h3 class="widget-title">Status do Projeto</h3>
-            <div class="widget-info-list">
-              <div class="widget-info-item">
-                <span class="widget-info-label">Estruturação de Copy</span>
-                <span class="widget-info-value" style="color: var(--accent-green);">Revisado manualmente</span>
-              </div>
-              <div class="widget-info-item">
-                <span class="widget-info-label">Refinamento Visual CSS</span>
-                <span class="widget-info-value" style="color: var(--accent-green);">Revisado manualmente</span>
-              </div>
-              <div class="widget-info-item">
-                <span class="widget-info-label">Triagem de Mídia</span>
-                <span class="widget-info-value" style="color: var(--accent-amber);">Planejado</span>
-              </div>
-            </div>
-          </div>
-        </aside>
-
-      </div>
-    </section>
-  </main>
-
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container">
-      <span class="footer-logo">Matheus Ramalho &copy; <span id="current-year"></span></span>
-      <div class="footer-socials">
-        <a href="https://www.linkedin.com/in/matheus-ramalho-a24b0371" class="footer-icon-link" aria-label="LinkedIn de Matheus Ramalho (abre em nova aba)" target="_blank" rel="noopener noreferrer" data-icon="linkedin"></a>
-        <a href="mailto:matheushm97@gmail.com" class="footer-icon-link" aria-label="Enviar e-mail para Matheus Ramalho" data-icon="mail"></a>
-        <a href="https://github.com/matramalho" class="footer-icon-link" aria-label="GitHub de Matheus Ramalho (abre em nova aba)" target="_blank" rel="noopener noreferrer" data-icon="github"></a>
-      </div>
-    </div>
-  </footer>
-
-  <!-- Entry Script -->
-  <script type="module" src="../../src/main.js"></script>
+<a class="skip-link" href="#main-content">Pular para o conteúdo principal</a>
+<header class="navbar">
+<div class="container">
+<a href="/" class="nav-logo">
+<span data-icon="n8n" style="color:var(--accent-blue)">
+</span>Matheus Ramalho</a>
+<button class="nav-toggle" type="button" aria-label="Abrir menu de navegação" aria-expanded="false" aria-controls="primary-navigation">
+<span data-icon="menu">
+</span>
+</button>
+<nav class="nav-links" id="primary-navigation" aria-label="Navegação principal">
+<a href="/#cases" class="nav-link">Projetos</a>
+<a href="/#capacidades" class="nav-link">Capacidades</a>
+<a href="/#como-uso-ia" class="nav-link">Como uso IA</a>
+<a href="/#processo" class="nav-link">Processo</a>
+<a href="/#seguranca" class="nav-link">Segurança</a>
+<a href="/#sobre" class="nav-link">Sobre</a>
+</nav>
+</div>
+</header>
+<main id="main-content">
+<header class="case-page-header">
+<div class="container">
+<a href="/" class="case-back-link">
+<span data-icon="arrow-right" style="transform:rotate(180deg)">
+</span>Voltar para a Home</a>
+<div class="case-header-content">
+<span class="badge badge-purple">Em desenvolvimento avançado</span>
+<h1 class="case-title">Landing page de seguros com desenvolvimento assistido por IA</h1>
+<p class="case-subtitle">Projeto de marketing pessoal no segmento de seguros, desenvolvido com apoio de agentes de IA para pesquisa, arquitetura de informação, implementação e revisão visual.</p>
+</div>
+</div>
+</header>
+<section class="container">
+<div class="case-content-layout">
+<article class="case-main-content">
+<section class="case-section">
+<h2 class="case-section-title">Meu papel</h2>
+<p>Conduzi a pesquisa de referências, a organização da página, a revisão de conteúdo e as decisões visuais. Também acompanhei a implementação, os testes e as iterações com apoio de ferramentas de IA.</p>
+<h2 class="case-section-title">Trabalho realizado</h2>
+<ul class="case-list">
+<li>organização da arquitetura da página;</li>
+<li>revisão de copy e hierarquia;</li>
+<li>desenvolvimento de componentes;</li>
+<li>exploração de hero sections;</li>
+<li>efeitos e transições entre seções;</li>
+<li>responsividade;</li>
+<li>pesquisa de referências;</li>
+<li>auditoria visual;</li>
+<li>otimização de assets;</li>
+<li>desenvolvimento assistido por agentes;</li>
+<li>preparação para publicação.</li>
+</ul>
+</section>
+<section class="case-section">
+<h2 class="case-section-title">Estado atual</h2>
+<p>Uma versão funcional foi publicada anteriormente. A versão atual está em desenvolvimento avançado e ainda passa por refinamento visual, revisão de conteúdo e validação final.</p>
+</section>
+<section class="evidence-gallery" hidden aria-hidden="true">
+</section>
+</article>
+<aside class="case-sidebar">
+<div class="sidebar-widget">
+<h3 class="widget-title">Status</h3>
+<span class="widget-info-value">Em desenvolvimento avançado</span>
+</div>
+</aside>
+</div>
+</section>
+</main>
+<footer class="footer">
+<div class="container">
+<span class="footer-logo">Matheus Ramalho &copy; <span id="current-year">
+</span>
+</span>
+<div class="footer-socials">
+<a href="https://www.linkedin.com/in/matheus-ramalho-a24b0371" class="footer-icon-link" aria-label="LinkedIn de Matheus Ramalho (abre em nova aba)" target="_blank" rel="noopener noreferrer" data-icon="linkedin">
+</a>
+<a href="mailto:matheushm97@gmail.com" class="footer-icon-link" aria-label="Enviar e-mail para Matheus Ramalho" data-icon="mail">
+</a>
+<a href="https://github.com/matramalho" class="footer-icon-link" aria-label="GitHub de Matheus Ramalho (abre em nova aba)" target="_blank" rel="noopener noreferrer" data-icon="github">
+</a>
+</div>
+</div>
+</footer>
+<script type="module" src="../../src/main.js">
+</script>
 </body>
 </html>
