@@ -2,8 +2,8 @@ import {escapeHTML as e,projectContext} from './institutional-model.js';
 export const projectFilters=[{id:'todos',label:'Todos'},{id:'sites',label:'Sites'},{id:'automacao',label:'Automações'},{id:'contexto',label:'Contexto e agentes'},{id:'produto',label:'Produto'}];
 const evidence={
  'landing-page-raphael-seguros':{kind:'sites',cover:'Recorte da interface',label:'Interface em desenvolvimento',summary:'Recorte identificado da interface e descrição das decisões de pesquisa, organização e revisão.'},
- 'automacao-propostas':{kind:'automacao',cover:'Panorama documental',label:'Workflow documentado',summary:'Etapas, regras e arquitetura interativa do workflow, com acesso ao registro original.'},
- 'renovacao-lembretes-calendario':{kind:'automacao',cover:'Panorama documental',label:'Workflow documentado',summary:'Rotina, verificações e arquitetura interativa documentadas, com acesso ao registro original.'},
+ 'automacao-propostas':{kind:'automacao',cover:'Arquitetura redesenhada',label:'Workflow documentado',summary:'Etapas, regras e arquitetura interativa do workflow, com acesso ao registro original.'},
+ 'renovacao-lembretes-calendario':{kind:'automacao',cover:'Arquitetura redesenhada',label:'Workflow documentado',summary:'Rotina, verificações e arquitetura interativa documentadas, com acesso ao registro original.'},
  'desenvolvimento-assistido-antigravity':{kind:'contexto',cover:'Capa conceitual',label:'Abordagem documentada',summary:'Bases documentais, instruções, handoffs e aplicações práticas descritas no estudo.'},
  'organizador-financeiro':{kind:'produto',cover:'Capa conceitual',label:'Estado do protótipo',summary:'O estudo descreve o protótipo local, seu estágio atual e as integrações ainda planejadas.'}
 };
