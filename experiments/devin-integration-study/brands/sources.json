@@ -1,0 +1,71 @@
+[
+  {
+    "title": "Docker",
+    "hex": "2496ED",
+    "source": "https://www.docker.com/company/newsroom/media-resources"
+  },
+  {
+    "title": "Git",
+    "hex": "F03C2E",
+    "source": "https://git-scm.com/community/logos",
+    "license": {
+      "type": "CC-BY-3.0"
+    }
+  },
+  {
+    "title": "GitHub",
+    "hex": "181717",
+    "source": "https://github.com/logos",
+    "guidelines": "https://github.com/logos"
+  },
+  {
+    "title": "Google Calendar",
+    "hex": "4285F4",
+    "source": "https://fonts.gstatic.com/s/i/productlogos/calendar_2020q4/v8/192px.svg"
+  },
+  {
+    "title": "Google Drive",
+    "hex": "4285F4",
+    "source": "https://developers.google.com/drive/web/branding"
+  },
+  {
+    "title": "Google Sheets",
+    "hex": "34A853",
+    "source": "https://sheets.google.com"
+  },
+  {
+    "title": "JavaScript",
+    "hex": "F7DF1E",
+    "source": "https://github.com/voodootikigod/logo.js/blob/1544bdeed6d618a6cfe4f0650d04ab8d9cfa76d9/js.svg",
+    "license": {
+      "type": "MIT"
+    }
+  },
+  {
+    "title": "JSON",
+    "hex": "000000",
+    "source": "https://commons.wikimedia.org/wiki/File:JSON_vector_logo.svg"
+  },
+  {
+    "title": "n8n",
+    "hex": "FF91AC",
+    "source": "https://guidelines.n8n.design/logo",
+    "guidelines": "https://guidelines.n8n.design"
+  },
+  {
+    "title": "Ollama",
+    "hex": "000000",
+    "source": "https://github.com/ollama/ollama/issues/2152#issuecomment-1905286922"
+  },
+  {
+    "title": "Vercel",
+    "hex": "000000",
+    "source": "https://vercel.com/geist/brands",
+    "guidelines": "https://vercel.com/geist/brands"
+  },
+  {
+    "title": "Vite",
+    "hex": "9135FF",
+    "source": "https://github.com/voidzero-dev/community-design-resources/blob/55902097229cf01cf2a4ceb376f992f5cf306756/brand-assets/vite/vite-icon-color-bracketless.svg"
+  }
+]

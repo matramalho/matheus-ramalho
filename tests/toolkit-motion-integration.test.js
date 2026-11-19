@@ -1,0 +1,9 @@
+import test from 'node:test';import assert from 'node:assert/strict';import{readFileSync,readdirSync}from'node:fs';
+import{tools}from'../experiments/devin-integration-study/tools-data.js';
+import{integrationState}from'../experiments/devin-integration-study/motion.js';
+import{circuitMarkup}from'../experiments/lusion-motion-study/institutional-circuit.js';
+const source=JSON.parse(readFileSync(new URL('../experiments/lusion-motion-study/portfolio-content.json',import.meta.url)));
+test('expanded tool list uses existing factual tags or the public GitHub profile',()=>{assert.equal(tools.length,21);assert.equal(new Set(tools.map(t=>t.name)).size,21);for(const tool of tools)assert.ok(source.editorial.about.tags.includes(tool.sourceTag)||(tool.sourceTag==='GitHub'&&source.contacts.github.includes('github.com')),tool.name);});
+test('bottom tools remain visible until the expanded cards start taking over',()=>{assert.equal(integrationState(.64,1224,712).grid[20].opacity,1);assert.equal(integrationState(.78,1224,712).grid[20].opacity,1);assert.equal(integrationState(1,1224,712).grid[20].opacity,0);assert.equal(integrationState(.64,1224,712).phase,'transformação');});
+test('layered LEDs preserve all 32 tracks with one head and two trail layers per track',()=>{const html=circuitMarkup();assert.equal((html.match(/class="trace-track"/g)||[]).length,32);for(const layer of ['afterglow','wake','head'])assert.equal((html.match(new RegExp('stream-'+layer,'g'))||[]).length,32);});
+test('brand files contain SVG artwork and no executable or embedded foreign content',()=>{const dir=new URL('../experiments/devin-integration-study/brands/',import.meta.url);for(const file of readdirSync(dir).filter(f=>f.endsWith('.svg'))){const text=readFileSync(new URL(file,dir),'utf8');assert.ok(text.includes('<svg'));assert.doesNotMatch(text,/<script|foreignObject|onload=|href=/i);}});
